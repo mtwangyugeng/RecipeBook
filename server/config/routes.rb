@@ -3,6 +3,6 @@ Rails.application.routes.draw do
     post "/signup", to: "users#create"
     post "/login", to: "users#login"
     get "/user", to: "users#user"
-    get '/recipes', to: 'recipes#show'
+    get '/recipes', to: 'recipes#showall'
   end
 end

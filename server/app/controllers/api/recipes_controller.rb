@@ -1,5 +1,8 @@
 class Api::RecipesController < ApplicationController
-    def show
-        render json: {hello: "Hi Ruby!"}
+    skip_before_action :authorized, only: [:showall]
+    def showall
+        recipes = Recipe.all()
+        render json: recipes
     end
+
 end
