@@ -19,17 +19,17 @@ class RecipesControllerTest < ActionDispatch::IntegrationTest
     #create recipes
     post "/api/createrecipe",
       headers: { "Authorization": "Bearer #{token}" },
-      params: { name: "a new recipe"}
+      params: { title: "a new recipe"}
     assert_response :success
     post "/api/createrecipe",
       headers: { "Authorization": "Bearer #{token}" },
-      params: { name: "an another recipe"}
+      params: { title: "an another recipe"}
     assert_response :success
     puts "Recipe created" + response.body
 
     get "/api/userrecipes",
       headers: { "Authorization": "Bearer #{token}" }
-    puts "All Recipe created that user: " + response.body
+    puts "All Recipe created by that user: " + response.body
     assert_response :success
 
     # user add an ingredient to a recipe
