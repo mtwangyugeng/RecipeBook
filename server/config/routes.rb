@@ -3,9 +3,14 @@ Rails.application.routes.draw do
     post "/signup", to: "users#create"
     post "/login", to: "users#login"
     get "/user", to: "users#user"
-    get '/recipes', to: 'recipes#showall'
-    post "/createrecipe", to: "recipes#create"
-    get "/userrecipes", to: "recipes#show"
-    post "/addingredient", to: "ingredients#create"
+
+    resources :recipes do
+      resources :procedures
+      resources :amounts
+    end
+    get "/user/recipes", to: "recipes#show_user"
+
+    resources :ingredients
+
   end
 end
