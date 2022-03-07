@@ -1,53 +1,54 @@
 require "test_helper"
+require "./test/controllers/controller_test_helper"
 
 class RecipesControllerTest < ActionDispatch::IntegrationTest
-  test "a user can create a new recipe with multiple ingredients and procedures" do
+  include ControllerTestHelper
+  setup do
+    @token = login
+  end
+  teardown do
+    Rails.cache.clear
+  end
 
-    post "/api/signup",
-      params: { email: "test@test.com", password: "sample" }
-    post "/api/login", 
-      params: { email: "test@test.com", password: "sample" }
-    user = JSON.parse(response.body)
-    token = user["token"]
-    assert_response :success
-
+  test "create recipe" do
     # create recipes
     post "/api/recipes",
-      headers: { "Authorization": "Bearer #{token}" },
+      headers: { "Authorization": "Bearer #{@token}" },
       params: { title: "a new recipe"}
     assert_response :created
     title = JSON.parse(response.body)["title"]
     assert_equal "a new recipe", title
+  end
 
-    # view all recipes
+  test "view all recipes" do
     get "/api/recipes"
     assert_response :success
-    puts "All recipes: " + response.body
+    recipes_length = JSON.parse(response.body).length
+    assert_equal 2, recipes_length
+  end
 
-    # view recipe by id
+  test "view recipe by id" do
     get "/api/recipes/1"
     assert_response :success
-    puts "recipe with id 1: " + response.body
+    title = JSON.parse(response.body)["title"]
+    assert_equal "a new recipe", title
+  end
 
-    # update recipe by id
+  test "update recipe by id" do
     patch "/api/recipes/1",
-      headers: { "Authorization": "Bearer #{token}" },
+      headers: { "Authorization": "Bearer #{@token}" },
       params: { title: "a new recipe with a new title"}  
     assert_response :accepted
     title = JSON.parse(response.body)["title"]
     assert_equal "a new recipe with a new title", title
-
-    delete "/api/recipes/1",
-      headers: { "Authorization": "Bearer #{token}" }
-    assert_response :ok
-
-    get "/api/recipes"
-    assert_response :success
-    puts "All recipes: " + response.body
-
-    get "/api/user/recipes/",
-      headers: { "Authorization": "Bearer #{token}" }
-    assert_response :success
-    puts "All recipes: " + response.body
   end
+
+  test "delete recipe by id" do
+    delete "/api/recipes/1",
+      headers: { "Authorization": "Bearer #{@token}" }
+    assert_response :see_other
+    recipes_length = JSON.parse(response.body).length
+    assert_equal 1, recipes_length
+  end
+
 end

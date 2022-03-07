@@ -1,1 +1,8 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+Alice:
+  email: alice@test.com
+  password_digest: $2a$10$06PBKneixtcc4dIJ3MtzYe5Zrjcze0um6xGIsEuqkwMmjBFboo97m
+
+Bob:
+  email: bob@test.com
+  password_digest: $2a$10$06PBKneixtcc4dIJ3MtzYe5Zrjcze0um6xGIsEuqkwMmjBFboo97m

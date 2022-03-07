@@ -6,7 +6,7 @@ class Api::UsersController < ApplicationController
         @user = User.create(user_params)
         if @user.valid?
             token = encode_token({user_id: @user.id})
-            render json: {user: @user.as_public_json, token: token}
+            render json: {user: @user.as_public_json, token: token}, status: :created
         else
             render json: {error: "Failed to create user"}
         end

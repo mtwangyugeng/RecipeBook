@@ -1,1 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+one:
+  id: 1
+  title: "fried rice"
+  user: "Alice"
+
+two:
+  id: 2
+  title: "stir fried cabbage"
+  user: "Alice"
+  

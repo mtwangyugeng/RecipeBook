@@ -1,6 +1,6 @@
 
 class Api::IngredientsController < ApplicationController
-    skip_before_action :authorized, only: [:showall]
+    skip_before_action :authorized, only: [:index]
 
     def create
         @ingredient = Ingredient.new(
@@ -13,7 +13,7 @@ class Api::IngredientsController < ApplicationController
         end
     end
 
-    def showall
+    def index
         ingredients = Ingredient.all()
         render json: ingredients
     end
@@ -25,9 +25,10 @@ class Api::IngredientsController < ApplicationController
 
     def create_inside_recipe
         create()
-        @recipeingredientbridge = RecipeIngredientBridge.new(
-                **recipe_ingredient_bridge_params,
-                recipe_id: @recipe.id,
+        recipe_id = params[:recipe_id]
+        @amount = Amount.new(
+                **amount_params,
+                recipe_id: recipe_id,
                 ingredient_id: @ingredient.id
             )
         
@@ -36,9 +37,9 @@ class Api::IngredientsController < ApplicationController
 
     private
         def ingredient_params
-            params.permit(:name, :unit, :image_url)
+            params.permit(:name, :image_url)
         end
-        def recipe_ingredient_bridge_params
-            params.permit(:name, :unit, :image_url)
+        def amount_params
+            params.permit(:amount)
         end
 end

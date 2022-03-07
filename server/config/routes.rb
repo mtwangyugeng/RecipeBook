@@ -8,9 +8,13 @@ Rails.application.routes.draw do
       resources :procedures
       resources :amounts
     end
+    
     get "/user/recipes", to: "recipes#show_user"
 
     resources :ingredients
+    post "/amounts/ingredients", to: "ingredients#create_inside_recipe"
+
+
 
   end
 end
