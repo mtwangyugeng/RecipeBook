@@ -1,1 +1,14 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+one:
+  id: 1
+  user: "Alice"
+  name: "egg"
+  image_url: "http://example.com"
+  unit: "piece"
+
+two:
+  id: 2
+  user: "Alice"
+  name: "cabbage"
+  image_url: "https://i5.walmartimages.ca/images/Large/094/497/6000200094497.jpg"
+  unit: "piece"

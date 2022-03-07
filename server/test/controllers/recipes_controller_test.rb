@@ -31,22 +31,28 @@ class RecipesControllerTest < ActionDispatch::IntegrationTest
     get "/api/recipes/1"
     assert_response :success
     title = JSON.parse(response.body)["title"]
-    assert_equal "a new recipe", title
+    assert_equal "fried rice", title
   end
 
   test "update recipe by id" do
     patch "/api/recipes/1",
       headers: { "Authorization": "Bearer #{@token}" },
-      params: { title: "a new recipe with a new title"}  
+      params: { title: "a recipe with a new title"}  
     assert_response :accepted
+
+    get "/api/recipes/1"
+    assert_response :success
     title = JSON.parse(response.body)["title"]
-    assert_equal "a new recipe with a new title", title
+    assert_equal "a recipe with a new title", title
   end
 
   test "delete recipe by id" do
     delete "/api/recipes/1",
       headers: { "Authorization": "Bearer #{@token}" }
     assert_response :see_other
+
+    get "/api/recipes"
+    assert_response :success
     recipes_length = JSON.parse(response.body).length
     assert_equal 1, recipes_length
   end
