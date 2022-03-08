@@ -2,10 +2,10 @@
 one:
   id: 1
   title: "fried rice"
-  user: "Alice"
+  user: Alice
 
 two:
   id: 2
   title: "stir fried cabbage"
-  user: "Alice"
+  user: Alice
   

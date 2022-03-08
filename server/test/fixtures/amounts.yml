@@ -1,0 +1,13 @@
+one:
+  id: 1
+  amount: 2
+  user: Alice
+  recipe_id: 1
+  ingredient_id: 1
+
+two:
+  id: 2
+  amount: 2.4
+  user: Alice
+  recipe_id: 2
+  ingredient_id: 2

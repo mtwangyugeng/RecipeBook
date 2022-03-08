@@ -4,17 +4,9 @@ Rails.application.routes.draw do
     post "/login", to: "users#login"
     get "/user", to: "users#user"
 
-    resources :recipes do
-      resources :procedures
-      resources :amounts
-    end
-    
-    get "/user/recipes", to: "recipes#show_user"
-
+    resources :recipes
+    resources :procedures, :amounts
     resources :ingredients
-    post "/amounts/ingredients", to: "ingredients#create_inside_recipe"
-
-
 
   end
 end
