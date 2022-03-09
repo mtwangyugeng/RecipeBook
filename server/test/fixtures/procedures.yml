@@ -1,0 +1,11 @@
+one:
+  id: 1
+  content: "Hello I am a produre."
+  recipe_id: 1
+  user: Alice
+
+two:
+  id: 2
+  content: "Hello I am a produre too."
+  recipe_id: 1
+  user: Alice
