@@ -1,19 +1,13 @@
 <script>
-    const getRecipes = async () => {
-        const res = await fetch('/api/recipes')
-        const text = await res.text();
-        if (res.ok) {
-            console.log("reee " + text)
-            return text;
-        } else {
-            throw new Error(text)
-        }
+import Content from "./Content.svelte";
+import SideBar from "./SideBar.svelte";
+    let currentRecipe = null
+    const setCurrentRecipeId = (neo) =>{
+        return () => {currentRecipeId = neo}
     }
-    let promise = getRecipes();
+    let currentRecipeId = null;
 </script>
-hidaa
-{#await promise}
-    <p>...waiting</p>
-{:then recipes} 
-    <p>{recipes}</p>
-{/await}
+
+RecipeBook: Main
+<SideBar currentRecipeId = {currentRecipeId} setCurrentRecipeId = {setCurrentRecipeId}/>
+<Content />
