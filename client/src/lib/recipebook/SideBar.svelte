@@ -1,5 +1,6 @@
 <script>
-    import AddRecipe from "./AddRecipe.svelte"
+    import PopoutMessage from "./PopoutMessage.svelte"
+    import RecipeForm from "./RecipeForm.svelte"
     // TODO: get request
     let recipes = [
                     {id: 1, title:"Fried Rice", user_id: 1},
@@ -23,7 +24,9 @@
 </ul>
 
 {#if addingMoreRecipe}
-    <AddRecipe closeWindow={closeWindow}/>
+    <PopoutMessage closeWindow={closeWindow} title="Add more recipe">
+        <RecipeForm />
+    </PopoutMessage>
 {/if}
 
 

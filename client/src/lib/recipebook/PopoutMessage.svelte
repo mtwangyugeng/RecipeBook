@@ -1,15 +1,16 @@
 <script>
     export let closeWindow;
+
+    export let title;
 </script>
 
 <div class="container">
     <section>
         <div class="topbar">
-            <button on:click={closeWindow}>x</button>
+            {title}
+            <button class="closeWindow" on:click={closeWindow}>x</button>
         </div>
-        <form>
-            
-        </form>
+        <slot></slot>
     </section>
 </div>
 
@@ -29,12 +30,15 @@
     section {
         background-color: white;
         width: 400px;
-        height: 400px;
     }
 
     .topbar {
         background-color: green;
         display: flex;
-        flex-direction: row-reverse;
+        justify-content: space-between;
+    }
+
+    .topbar > .closeWindow {
+        padding: 2px;
     }
 </style>
