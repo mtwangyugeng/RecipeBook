@@ -8,6 +8,15 @@ import SideBar from "./SideBar.svelte";
     let currentRecipeId = null;
 </script>
 
-RecipeBook: Main
-<SideBar currentRecipeId = {currentRecipeId} setCurrentRecipeId = {setCurrentRecipeId}/>
-<Content />
+<section>
+    <SideBar setCurrentRecipeId={setCurrentRecipeId}/>
+    <Content currentRecipeId={currentRecipeId}/>
+</section>
+
+<style>
+    section {
+        display: flex;
+        background-color: blue;
+        height: 100%;
+    }
+</style>

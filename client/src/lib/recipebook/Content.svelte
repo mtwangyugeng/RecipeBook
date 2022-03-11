@@ -18,31 +18,54 @@
         {name: "milk", unit: "ml"},
         {name: "water", unit: "ml"}
     ]
+
+    export let currentRecipeId;
 </script>
 
 <section>
-    <h2>Ingredients</h2>
-    <ul>
-    {#each amounts as {id, amount, ingredient_id} (id)}    
-    <label>
-        <input type="checkbox">
-        {ingredients[ingredient_id].name + ": " + amount + " " + ingredients[ingredient_id].unit}
-    </label>
-    {/each}
-    </ul>
+    {#if currentRecipeId}
+        <h2>{currentRecipeId}</h2>
 
-    <h2>Steps</h2>
-    <ul>
-        {#each procedures as {id, content} (id)}    
-            <li>
-            {content}
-            </li>
+        <h3>Ingredients</h3>
+        <ul class="ingredients">
+        {#each amounts as {id, amount, ingredient_id} (id)}
+        <li><label>
+            <input type="checkbox">
+            {ingredients[ingredient_id].name + ": " + amount + " " + ingredients[ingredient_id].unit}
+        </label></li>
         {/each}
-    </ul>
+        </ul>
+
+        <h3>Steps</h3>
+        <ul class="steps">
+            {#each procedures as {id, content} (id)}    
+                <li>
+                {content}
+                </li>
+            {/each}
+        </ul>
+    {/if}
 </section>
 
 <style>
     section {
+        width: calc(100% - 200px);
         background-color: pink;
+        padding: 20px
+    }
+
+    .ingredients > li {
+        padding-left: 20px;
+    }
+
+    .ingredients label {
+        cursor: pointer;
+    }
+
+    .steps > li {
+        margin-top: 20px;
+        background-color: rgb(0, 255, 115);
+        padding: 20px;
+        border-radius: 15px;
     }
 </style>
