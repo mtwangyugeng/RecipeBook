@@ -1,7 +1,6 @@
 <script>
-import Content from "./Content.svelte";
-import SideBar from "./SideBar.svelte";
-    let currentRecipe = null
+    import Content from "./Content.svelte";
+    import SideBar from "./SideBar.svelte";
     const setCurrentRecipeId = (neo) =>{
         return () => {currentRecipeId = neo}
     }

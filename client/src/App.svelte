@@ -1,9 +1,12 @@
 <script>
-  import RecipeBook from "./lib/recipebook/Main.svelte";
+  import SignupForm from "./lib/recipebook/forms/SignupForm.svelte";
+import RecipeBook from "./lib/recipebook/Main.svelte";
+  
 </script>
 
 <main>
-  <RecipeBook />
+  <!-- <RecipeBook /> -->
+  <SignupForm />
 </main>
 
 <style>

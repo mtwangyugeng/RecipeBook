@@ -1,4 +1,8 @@
 <script>
+import ProcedureForm from "./forms/ProcedureForm.svelte";
+import PopoutMessage from "./PopoutMessage.svelte";
+
+
     // TODO: Get request
     let amounts = [
         {id: 1, amount: 1, ingredient_id: 1},
@@ -20,6 +24,8 @@
     ]
 
     export let currentRecipeId;
+
+    let addingProcedure = false;
 </script>
 
 <section>
@@ -28,24 +34,32 @@
 
         <h3>Ingredients</h3>
         <ul class="ingredients">
-        {#each amounts as {id, amount, ingredient_id} (id)}
-        <li><label>
-            <input type="checkbox">
-            {ingredients[ingredient_id].name + ": " + amount + " " + ingredients[ingredient_id].unit}
-        </label></li>
-        {/each}
+            {#each amounts as {id, amount, ingredient_id} (id)}
+                <li><label>
+                    <input type="checkbox">
+                    {ingredients[ingredient_id].name + ": " + amount + " " + ingredients[ingredient_id].unit}
+                </label></li>
+            {/each}
         </ul>
 
         <h3>Steps</h3>
         <ul class="steps">
             {#each procedures as {id, content} (id)}    
                 <li>
-                {content}
+                    {content}
                 </li>
             {/each}
+            <button on:click={()=>{addingProcedure = true}}>add procedure</button>
         </ul>
     {/if}
 </section>
+
+{#if addingProcedure}
+    <PopoutMessage closeWindow={()=>{addingProcedure = false}} title="Add more procedure">
+        <ProcedureForm />
+    </PopoutMessage>
+{/if}
+
 
 <style>
     section {

@@ -1,6 +1,6 @@
 <script>
     import PopoutMessage from "./PopoutMessage.svelte"
-    import RecipeForm from "./RecipeForm.svelte"
+    import RecipeForm from "./forms/RecipeForm.svelte"
     // TODO: get request
     let recipes = [
                     {id: 1, title:"Fried Rice", user_id: 1},
@@ -10,8 +10,8 @@
     export let setCurrentRecipeId;
     let addingMoreRecipe = false;
     const closeWindow = () => {
-        addingMoreRecipe = false
-        }
+        addingMoreRecipe = false;
+    }
 </script>
 
 <ul>

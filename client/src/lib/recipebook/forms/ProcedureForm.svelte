@@ -1,5 +1,5 @@
 <form>
-    <label for="content">Recipe name:
+    <label for="content">Procedure:
         <input type="text" id="content" name="content" placeholder="Enter content">
     </label>
     <input type="submit" value="Submit">
