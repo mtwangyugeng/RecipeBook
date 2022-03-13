@@ -1,4 +1,4 @@
-import {readable, writable} from 'svelte/store';
+import {writable} from 'svelte/store';
 
 export const token = writable("");
 export const user = writable("");
@@ -28,7 +28,7 @@ export const postSignup = async (/** @type {{ email: string, password: string }}
 }
 
 export const postSignin = async (/** @type {{ email: string, password: string }} */ signupJson) => {
-    const url = "/api/signin";
+    const url = "/api/login";
     const options = {
         method: "POST",
         headers: {
