@@ -5,7 +5,7 @@ import RecipeBook from "./lib/recipebook/Main.svelte";
 </script>
 
 <main>
-  <!-- <RecipeBook /> -->
+  <RecipeBook />
   <SignupForm />
 </main>
 

@@ -1,6 +1,14 @@
 <script>
-import { prevent_default } from "svelte/internal";
 
+import {postSignup, token} from '../stores/User'
+
+const handleSubmit = () => {
+    if (password === confirm_password){
+        postSignup({"email":email, "password":password})
+    } else {
+        // TODO: unequal passwords message
+    }
+}
 
 let email = "";
 let password = "";
@@ -13,25 +21,16 @@ const inputConfirmPassword = (e) => {confirm_password = e.target.value}
 let show_password = false
 $: passwordType = show_password ? 'text' : 'password'
 
-const handleSubmit = () => {
-    if (password === confirm_password){
-        console.log({"email":email, "password":password})
-    } else {
-        // TODO: unequal passwords message
-    }
-}
 </script>
-
 
 <form on:submit|preventDefault={handleSubmit}>
     <label for="email">Email:</label> <br>
     <input type="email" value={email} on:input={inputEmail} id="email" name="email" placeholder="Enter email" required>
-   
 
-    <label for="password">password:</label> <br>
+    <label for="password">Password:</label> <br>
     <input type={passwordType} value={password} on:input={inputPassword} id="password" name="password" placeholder="Enter password" required>
     
-    <label for="confirm_password">Confirm password:</label> <br>
+    <label for="confirm_password">Confirm Password:</label> <br>
     <input type={passwordType} value={confirm_password} on:input={inputConfirmPassword} id="confirm_password" name="confirm_password" placeholder="Confirm password" required>
     
     <label>
@@ -39,12 +38,14 @@ const handleSubmit = () => {
         Show Password
     </label>
 
-    <input type="submit" value="Signup">
+    <input type="submit" value="Sign Up">
 </form>
 
 
 <style>
     form {
+        width: 400px;
+
         display: flex;
         flex-direction: column;
         padding: 20px;
@@ -52,7 +53,12 @@ const handleSubmit = () => {
 
     form > input[type="submit"] {
         background-color: yellow;
+        padding: 10px;
     }
+    form > input[type="submit"]:hover {
+        background-color: rgb(255, 145, 0);
+    }
+
 
     label {
         user-select: none;

@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [svelte()],
   server: {
     proxy: {
-      '/api/recipes': 'http://localhost:3001/'
+      '/api': 'http://localhost:3001'
     },
     cors: true
   }
