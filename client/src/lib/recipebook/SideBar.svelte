@@ -1,12 +1,12 @@
 <script>
     import PopoutMessage from "./PopoutMessage.svelte"
+
     import RecipeForm from "./forms/RecipeForm.svelte"
-    // TODO: get request
-    let recipes = [
-                    {id: 1, title:"Fried Rice", user_id: 1},
-                    {id: 2, title:"Fried Cabbage", user_id: 1},
-                    {id: 3, title:"Cake", user_id: 2},
-                ]
+    import {recipes, recipesCrud} from "./stores/Recipe.js"
+
+    import {token} from "./stores/User.js"
+    recipesCrud.getAll()
+
     export let setCurrentRecipeId;
     let addingMoreRecipe = false;
     const closeWindow = () => {
@@ -16,16 +16,20 @@
 
 <ul>
     <h2>Recipes</h2>
-    {#each recipes as recipe (recipe.id)}
+    {#each $recipes as recipe (recipe.id)}
         <!-- click recipe button to change info on currentRecipe -->
-        <li on:click={setCurrentRecipeId(recipe.id)}>{recipe.title}</li>
+        <li>
+            <div on:click={setCurrentRecipeId(recipe.id)}>{recipe.title}</div>
+            <div>update</div>
+            <div on:click={()=>{recipesCrud.delete(recipe.id, $token)}}>delete</div>
+        </li>
     {/each}
     <button on:click={() => addingMoreRecipe = true}>+</button>
 </ul>
 
 {#if addingMoreRecipe}
     <PopoutMessage closeWindow={closeWindow} title="Add more recipe">
-        <RecipeForm />
+        <RecipeForm closeWindow={closeWindow} post={recipesCrud.post}/>
     </PopoutMessage>
 {/if}
 
@@ -38,6 +42,7 @@
 
         display: flex;
         flex-direction: column;
+        overflow: auto;
     }
 
     h2 {
