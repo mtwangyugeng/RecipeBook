@@ -28,6 +28,7 @@ export const getCrudApi = (impUrl, writableArr) => {
                     return res
                 })
             }
+            return res.status
         },
 
         update: async (id, impJson, token) => {
