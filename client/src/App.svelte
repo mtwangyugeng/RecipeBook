@@ -1,11 +1,14 @@
 <script>
-  import SignupForm from "./lib/recipebook/forms/SignupForm.svelte";
   import RecipeBook from "./lib/recipebook/Main.svelte";
+
+  import {token, postSignin} from "./lib/recipebook/stores/User";
+  postSignin({email:"test@test.com", password:"sample"}).then(()=>{
+	  console.log($token);
+  })
 </script>
 
 <main>
   <RecipeBook />
-  <SignupForm />
 </main>
 
 <style>
