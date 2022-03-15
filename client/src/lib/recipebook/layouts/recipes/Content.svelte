@@ -1,6 +1,6 @@
 <script>
-import ProcedureForm from "./forms/ProcedureForm.svelte";
-import PopoutMessage from "./PopoutMessage.svelte";
+import ProcedureForm from "../../forms/ProcedureForm.svelte";
+import PopoutMessage from "../PopoutMessage.svelte";
 
 
     // TODO: Get request

@@ -1,10 +1,10 @@
 <script>
-    import PopoutMessage from "./PopoutMessage.svelte"
+    import PopoutMessage from "../PopoutMessage.svelte"
 
-    import RecipeForm from "./forms/RecipeForm.svelte"
-    import {recipes, recipesCrud} from "./stores/Recipe.js"
+    import RecipeForm from "../../forms/RecipeForm.svelte"
+    import {recipes, recipesCrud} from "../../stores/Recipe.js"
 
-    import {token} from "./stores/User.js"
+    import {token} from "../../stores/User.js"
     recipesCrud.getAll()
 
     export let setCurrentRecipeId;

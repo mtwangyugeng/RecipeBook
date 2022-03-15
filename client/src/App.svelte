@@ -1,5 +1,5 @@
 <script>
-  import RecipeBook from "./lib/recipebook/Main.svelte";
+  import RecipeBook from "./lib/recipebook/layouts/Main.svelte";
 
   import {token, postSignin} from "./lib/recipebook/stores/User";
   postSignin({email:"test@test.com", password:"sample"}).then(()=>{
