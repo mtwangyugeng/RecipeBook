@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_09_034514) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_15_203626) do
   create_table "amounts", force: :cascade do |t|
     t.float "amount"
     t.datetime "created_at", null: false
@@ -26,10 +26,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_09_034514) do
   create_table "ingredients", force: :cascade do |t|
     t.string "name"
     t.string "unit"
-    t.string "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id", null: false
+    t.string "best_market"
+    t.float "common_quantity"
+    t.integer "common_price"
     t.index ["user_id"], name: "index_ingredients_on_user_id"
   end
 

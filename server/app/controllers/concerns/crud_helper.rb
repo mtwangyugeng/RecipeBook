@@ -26,7 +26,7 @@ module CrudHelper
     def update
         res = @target_model.find(params[:id])
         if res.update(@target_params)
-            render json: {"status": :accepted}, status: :accepted
+            render json: res, status: :accepted
         else
             render json: {"error": "update: internal_server_error"}, status: :internal_server_error
         end
@@ -35,7 +35,7 @@ module CrudHelper
     def destroy
         res = @target_model.find(params[:id])
         if res.destroy
-            render json: {"status": :see_other}, status: :see_other
+            render json: {"success": "Deleted"}, status: :see_other
         else
             render json: {"status": :internal_server_error}, status: :internal_server_error
         end
