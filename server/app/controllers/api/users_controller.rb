@@ -17,9 +17,9 @@ class Api::UsersController < ApplicationController
         @user = User.find_by(email: params[:email])
         if @user && @user.authenticate(params[:password])
             token = encode_token({user_id: @user.id})
-            render json: {user: @user.as_public_json, token: token}
+            render json: {user: @user.as_public_json, token: token}, status: :accepted
         else
-            render json: {error: "Invalid username or password"}
+            render json: {error: "Invalid username or password"}, status: :bad_request
         end
     end
     

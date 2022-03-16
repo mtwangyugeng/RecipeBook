@@ -1,19 +1,20 @@
 <script>
-    //  NavList + userInfo
-    export let tabs;
-    export let switchTab;
+//  NavList + userInfo
+export let tabs;
+export let switchTab;
 
-    import {user} from '../stores/User'
+import {user} from '../stores/User'
+import User from './user/User.svelte';
 </script>
 
 
 <div class="container">
     <nav>
         {#each tabs as tab (tab)}
-            <div class="tab" on:click={()=>{switchTab(tab)}}>{tab}</div>
+            <button class="tab" on:click={()=>{switchTab(tab)}}>{tab}</button>
         {/each}
     </nav>
-
+    <User />
 </div>
 
 
@@ -21,12 +22,11 @@
     .container {
         background-color: green;
         height:5%;
+        display: flex;
+        justify-content: space-between;
     }
     nav {
         display: flex;
-    }
-    .tab {
-        cursor: pointer;
     }
     .tab:hover{
         color: red;
