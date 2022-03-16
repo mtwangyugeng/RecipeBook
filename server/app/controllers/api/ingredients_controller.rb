@@ -13,6 +13,6 @@ class Api::IngredientsController < ApplicationController
 
     private
         def ingredient_params
-            params.permit(:name, :image_url, :unit)
+            params.permit(:name, :unit, :best_market, :common_price, :common_quantity)
         end
 end

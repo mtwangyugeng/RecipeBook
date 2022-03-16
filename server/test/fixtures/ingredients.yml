@@ -3,12 +3,16 @@ one:
   id: 1
   user: Alice
   name: "egg"
-  image_url: "http://example.com"
   unit: "piece"
+  best_market: "Costco"
+  common_quantity: 12
+  common_price: 1200
 
 two:
   id: 2
   user: Alice
   name: "cabbage"
-  image_url: "https://i5.walmartimages.ca/images/Large/094/497/6000200094497.jpg"
   unit: "piece"
+  best_market: "Lucky Food Market"
+  common_quantity: 12
+  common_price: 230

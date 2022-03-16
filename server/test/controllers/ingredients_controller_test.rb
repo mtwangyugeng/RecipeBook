@@ -5,25 +5,25 @@ class IngredientsControllerTest < ActionDispatch::IntegrationTest
   include ControllerTestHelper
   setup do
     @token = login
+
+    @url = "/api/ingredients"
   end
   teardown do
     Rails.cache.clear
   end
 
   test "create ingredient" do
-    post "/api/ingredients",
+    impJson = { name: "a new ingredient", best_market: "neo market", unit: "ml", common_quantity: "12.1", common_price: "122"}
+
+    post @url,
       headers: { "Authorization": "Bearer #{@token}" },
-      params: { name: "a new ingredient", image_url: "http://example.com", unit: "ml"}
+      params: impJson
     assert_response :created
 
     resJSON = JSON.parse(response.body)
-    name = resJSON["name"]
-    image_url = resJSON["image_url"]
-    unit = resJSON["unit"]
-
-    assert_equal "a new ingredient", name
-    assert_equal "http://example.com", image_url
-    assert_equal "ml", unit
+    impJson.each do |key, value|
+      assert_equal value, resJSON[key.to_s].to_s
+    end
   end
 
   test "view all ingredients" do
@@ -39,11 +39,11 @@ class IngredientsControllerTest < ActionDispatch::IntegrationTest
 
     resJSON = JSON.parse(response.body)
     name = resJSON["name"]
-    image_url = resJSON["image_url"]
+    best_market = resJSON["best_market"]
     unit = resJSON["unit"]
 
     assert_equal "egg", name
-    assert_equal "http://example.com", image_url
+    assert_equal "Costco", best_market
     assert_equal "piece", unit
   end
 
