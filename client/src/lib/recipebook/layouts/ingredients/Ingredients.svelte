@@ -1,14 +1,28 @@
-<section>
-    <div class="card">
-        <h3> Egg</h3>
-        unit: peice <br>
-        best market: 丰泰<br>
-        CP/CQ: 24peice/$12 <br>
+<script>
+    import {ingredients, ingredientsCrud} from '../../stores/Ingredient.js'
+    ingredientsCrud.getAll()
 
-    </div>
+    import FormAddingIngredient from './FormAddingIngredient.svelte'
+    let addingIngredient = false;
+</script>
+
+
+<section>
+    {JSON.stringify($ingredients)}
+
+    <button on:click={()=>{addingIngredient=true}}>Add Ingredient</button>   
 </section>
 
-
-<script>
-
-</script>
+{#if addingIngredient}
+    <FormAddingIngredient 
+        close={()=>{addingIngredient=false}} 
+        submit={ingredientsCrud.post} 
+        impJson={{
+            name: "",
+            unit: "",
+            best_market: "",
+            common_quantity: "",
+            common_price: "",
+        }}
+    />
+{/if}

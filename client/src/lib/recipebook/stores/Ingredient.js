@@ -4,4 +4,4 @@ import {getCrudApi} from "./_CrudHelper.js"
 const url = "/api/ingredients";
 
 export const ingredients = writable([]);
-export const recipesCrud = getCrudApi(url, ingredients)
+export const ingredientsCrud = getCrudApi(url, ingredients)
