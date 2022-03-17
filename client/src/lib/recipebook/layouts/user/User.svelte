@@ -1,7 +1,7 @@
 <script>
 import {user, postSignin, postSignup, logout} from '../../stores/User.js'
-import FormSignUp from "./FormSignUp.svelte"
-import FormSignIn from "./FormSignIn.svelte"
+import FormSignUp from "../../forms/PostSignUp.svelte"
+import FormSignIn from "../../forms/PostSignIn.svelte"
 
 let signningIn = false;
 let signningUp = false;

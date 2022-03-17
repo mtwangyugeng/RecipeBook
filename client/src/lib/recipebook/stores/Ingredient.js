@@ -4,4 +4,9 @@ import {getCrudApi} from "./_CrudHelper.js"
 const url = "/api/ingredients";
 
 export const ingredients = writable([]);
-export const ingredientsCrud = getCrudApi(url, ingredients)
+
+const crud = getCrudApi(url, ingredients)
+export const getAllIngredients = crud.getAll;
+export const postIngredient = crud.post;
+export const updateIngredient = crud.update;
+export const deleteIngredient = crud.delete;

@@ -1,36 +1,30 @@
 <script>
-    import PopoutMessage from "../PopoutMessage.svelte"
+    //Terminal
+    import {recipes, getAllRecipes, deleteRecipe} from "../../stores/Recipe.js";
+    import {token} from "../../stores/User.js";
+    import PostRecipe from '../../forms/PostRecipe.svelte';
 
-    import RecipeForm from "../../forms/RecipeForm.svelte"
-    import {recipes, recipesCrud} from "../../stores/Recipe.js"
 
-    import {token} from "../../stores/User.js"
-    recipesCrud.getAll()
-
+    getAllRecipes()
     export let setCurrentRecipeId;
-    let addingMoreRecipe = false;
-    const closeWindow = () => {
-        addingMoreRecipe = false;
-    }
+
+    let postingRecipe = false;
 </script>
 
 <ul>
     <h2>Recipes</h2>
     {#each $recipes as recipe (recipe.id)}
-        <!-- click recipe button to change info on currentRecipe -->
         <li>
             <div on:click={setCurrentRecipeId(recipe.id)}>{recipe.title}</div>
             <div>update</div>
-            <div on:click={()=>{recipesCrud.delete(recipe.id, $token)}}>delete</div>
+            <div on:click={()=>{deleteRecipe(recipe.id, $token)}}>delete</div>
         </li>
     {/each}
-    <button on:click={() => addingMoreRecipe = true}>+</button>
+    <button on:click={() => postingRecipe = true}>+</button>
 </ul>
 
-{#if addingMoreRecipe}
-    <PopoutMessage closeWindow={closeWindow} title="Add more recipe">
-        <RecipeForm closeWindow={closeWindow} post={recipesCrud.post}/>
-    </PopoutMessage>
+{#if postingRecipe}
+    <PostRecipe close={() => {postingRecipe = false}} />
 {/if}
 
 

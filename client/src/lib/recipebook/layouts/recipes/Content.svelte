@@ -1,8 +1,4 @@
 <script>
-import ProcedureForm from "../../forms/ProcedureForm.svelte";
-import PopoutMessage from "../PopoutMessage.svelte";
-
-
     // TODO: Get request
     let amounts = [
         {id: 1, amount: 1, ingredient_id: 1},
@@ -55,9 +51,7 @@ import PopoutMessage from "../PopoutMessage.svelte";
 </section>
 
 {#if addingProcedure}
-    <PopoutMessage closeWindow={()=>{addingProcedure = false}} title="Add more procedure">
-        <ProcedureForm />
-    </PopoutMessage>
+
 {/if}
 
 

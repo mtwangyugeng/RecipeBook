@@ -1,8 +1,8 @@
 <script>
-import PopoutMessage from "../PopoutMessage.svelte";
+import PopoutMessage from "./PopoutMessage.svelte";
 export let close;
 
-import {postSignup} from '../../stores/User'
+import {postSignup} from '../stores/User'
 const handleSubmit = async () => {
     if (password === confirm_password){
         const status = await postSignup({"email":email, "password":password})
@@ -27,7 +27,7 @@ $: passwordType = show_password ? 'text' : 'password'
 
 </script>
 
-<PopoutMessage closeWindow={close} title="Sign Up">
+<PopoutMessage close={close} title="Sign Up">
     <form on:submit|preventDefault={handleSubmit}>
         <label for="email">Email:</label> <br>
         <input type="email" value={email} on:input={inputEmail} id="email" name="email" placeholder="Enter email" required>

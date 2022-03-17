@@ -1,5 +1,5 @@
 <script>
-    export let closeWindow;
+    export let close;
 
     export let title;
 </script>
@@ -8,7 +8,7 @@
     <section>
         <div class="topbar">
             {title}
-            <button class="closeWindow" on:click={closeWindow}>x</button>
+            <button class="close" on:click={close}>x</button>
         </div>
         <slot></slot>
     </section>
@@ -40,7 +40,7 @@
         justify-content: space-between;
     }
 
-    .topbar > .closeWindow {
+    .topbar > .close {
         padding: 2px;
     }
 </style>

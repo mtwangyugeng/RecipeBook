@@ -1,8 +1,9 @@
 <script>
-    import {ingredients, ingredientsCrud} from '../../stores/Ingredient.js'
-    ingredientsCrud.getAll()
+    import {ingredients, getAllIngredients} from '../../stores/Ingredient.js'
+    getAllIngredients()
 
-    import FormAddingIngredient from './FormAddingIngredient.svelte'
+    import PostIngredient from '../../forms/PostIngredient.svelte'
+
     let addingIngredient = false;
 </script>
 
@@ -14,15 +15,5 @@
 </section>
 
 {#if addingIngredient}
-    <FormAddingIngredient 
-        close={()=>{addingIngredient=false}} 
-        submit={ingredientsCrud.post} 
-        impJson={{
-            name: "",
-            unit: "",
-            best_market: "",
-            common_quantity: "",
-            common_price: "",
-        }}
-    />
+    <PostIngredient close={addingIngredient=false}/>
 {/if}

@@ -1,8 +1,8 @@
 <script>
-    import PopoutMessage from "../PopoutMessage.svelte";
+    import PopoutMessage from "./PopoutMessage.svelte";
     export let close;
     
-    import {postSignin} from '../../stores/User'
+    import {postSignin} from '../stores/User'
 
     let message = "Please enter a username and password";
 
@@ -27,7 +27,7 @@
     
     </script>
     
-    <PopoutMessage closeWindow={close} title="Sign In">
+    <PopoutMessage close={close} title="Sign In">
         {message}
         <form on:submit|preventDefault={handleSubmit}>
             <label for="email">Email:</label> <br>
