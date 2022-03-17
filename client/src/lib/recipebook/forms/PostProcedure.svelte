@@ -1,23 +1,21 @@
 <script>
     import {token} from "../stores/User.js";
-    import {postIngredient} from "../stores/Ingredient.js"
+    import {postProcedure} from "../stores/Procedure.js"
 
     import PopoutMessage from "./PopoutMessage.svelte";
     export let close;
 
-    let message = "Please enter ingredient properties";
+    let message = "Please enter procedure properties";
+
+    export let recipe_id;
 
     let impJson = {
-            name: "",
-            unit: "",
-            best_market: "",
-            common_quantity: "",
-            common_price: "",
+            content: "",
         };
 
     const handleSubmit = async () => {
         message = "requesting..."
-        const status = await postIngredient(impJson, $token)
+        const status = await postProcedure({...impJson, recipe_id}, $token)
         if(status == 201) {
             close();
         }
@@ -26,7 +24,7 @@
     
     </script>
     
-    <PopoutMessage close={close} title="New Ingredient">
+    <PopoutMessage close={close} title={`New procedure in ${recipe_id}`}>
         {message}
         <form on:submit|preventDefault={handleSubmit}>
             {#each Object.keys(impJson) as name}

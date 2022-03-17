@@ -1,14 +1,24 @@
 <script>
+    import PostProcedure from "../../forms/PostProcedure.svelte";
+    import {procedures, getAllProcedures} from "../../stores/Procedure.js"
+
+    export let currentRecipeId;
+
+    getAllProcedures();
+
+    let proceduresDisplayed = [];
+    const handleCurrentRecipeIdChange = (currentRecipeId, procedures) => {
+        const finale = procedures.filter(v=>v.recipe_id == currentRecipeId);
+        proceduresDisplayed = finale
+    }
+
+    $: handleCurrentRecipeIdChange(currentRecipeId, $procedures)
+
     // TODO: Get request
     let amounts = [
         {id: 1, amount: 1, ingredient_id: 1},
         {id: 2, amount: 2, ingredient_id: 2},
         {id: 3, amount: 33, ingredient_id: 3},
-    ]
-    let procedures = [
-        {id: 1, content: "first step"},
-        {id: 2, content: "second step"},
-        {id: 3, content: "third step"}
     ]
 
     // TODO: Load all ingredients at once to the parents
@@ -19,7 +29,7 @@
         {name: "water", unit: "ml"}
     ]
 
-    export let currentRecipeId;
+
 
     let addingProcedure = false;
 </script>
@@ -40,18 +50,18 @@
 
         <h3>Steps</h3>
         <ul class="steps">
-            {#each procedures as {id, content} (id)}    
+            {#each proceduresDisplayed as {id, content} (id)}    
                 <li>
                     {content}
                 </li>
             {/each}
-            <button on:click={()=>{addingProcedure = true}}>add procedure</button>
+            <button class="addProcedure" on:click={()=>{addingProcedure = true}}>add procedure</button>
         </ul>
     {/if}
 </section>
 
 {#if addingProcedure}
-
+    <PostProcedure close={()=>{addingProcedure=false}} recipe_id={currentRecipeId} />
 {/if}
 
 
@@ -76,4 +86,13 @@
         padding: 20px;
         border-radius: 15px;
     }
+
+    .addProcedure {
+        background-color: blue;
+        padding: 10px;
+    }
+    .addProcedure:hover {
+        background-color: rgb(51, 255, 0);
+    }
+
 </style>

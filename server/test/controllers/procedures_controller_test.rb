@@ -31,7 +31,7 @@ class ProceduresControllerTest < ActionDispatch::IntegrationTest
       assert_equal 2, recipes_length
     end
   
-    test "view ingredient by id" do
+    test "view procedure by id" do
       get "/api/procedures/1"
       assert_response :success
   
