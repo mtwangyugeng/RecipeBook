@@ -1,14 +1,22 @@
 <script>
     //Terminal
-    import {recipes, getAllRecipes, deleteRecipe} from "../../stores/Recipe.js";
-    import {token} from "../../stores/User.js";
+    import {recipes, getAllRecipes} from "../../stores/Recipe.js";
+
     import PostRecipe from '../../forms/PostRecipe.svelte';
+    import UpdateRecipe from '../../forms/UpdateRecipe.svelte';
+    import DeleteRecipe from '../../forms/DeleteRecipe.svelte';
 
 
     getAllRecipes()
     export let setCurrentRecipeId;
 
     let postingRecipe = false;
+
+    let updatingRecipe = false;
+    let updatingRecipeId = null;
+
+    let deletingRecipe = false;
+    let deletingRecipeId = null;
 </script>
 
 <ul>
@@ -16,8 +24,8 @@
     {#each $recipes as recipe (recipe.id)}
         <li>
             <div on:click={setCurrentRecipeId(recipe.id)}>{recipe.title}</div>
-            <div>update</div>
-            <div on:click={()=>{deleteRecipe(recipe.id, $token)}}>delete</div>
+            <div on:click={()=>{updatingRecipe = true; updatingRecipeId=recipe.id}}>update</div>
+            <div on:click={()=>{deletingRecipe = true; deletingRecipeId=recipe.id}}>delete</div>
         </li>
     {/each}
     <button on:click={() => postingRecipe = true}>+</button>
@@ -27,6 +35,13 @@
     <PostRecipe close={() => {postingRecipe = false}} />
 {/if}
 
+{#if updatingRecipe}
+    <UpdateRecipe close={() => {updatingRecipe = false}} updatingRecipeId={updatingRecipeId}/>
+{/if}
+
+{#if deletingRecipe}
+    <DeleteRecipe close={() => {deletingRecipe = false}} deletingRecipeId={deletingRecipeId}/>
+{/if}
 
 <style> 
     ul {

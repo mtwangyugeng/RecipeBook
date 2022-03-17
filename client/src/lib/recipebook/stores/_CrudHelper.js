@@ -52,6 +52,7 @@ export const getCrudApi = (impUrl, writableArr) => {
                     return res
                 })
             }
+            return res.status
         },
 
         delete: async (id, token) => {
@@ -70,6 +71,7 @@ export const getCrudApi = (impUrl, writableArr) => {
                     return res
                 })
             }
+            return res.status
         }
     };
 }
