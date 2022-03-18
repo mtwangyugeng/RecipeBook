@@ -10,3 +10,4 @@ export const getAllProcedures = crud.getAll;
 export const postProcedure = crud.post;
 export const updateProcedure = crud.update;
 export const deleteProcedure = crud.delete;
+

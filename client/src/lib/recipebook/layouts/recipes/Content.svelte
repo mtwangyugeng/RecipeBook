@@ -1,37 +1,25 @@
 <script>
     import PostProcedure from "../../forms/PostProcedure.svelte";
+    import PostAmount from "../../forms/PostAmount.svelte";
     import {procedures, getAllProcedures} from "../../stores/Procedure.js"
+    import {amounts, getAllAmounts} from "../../stores/Amount.js"
 
     export let currentRecipeId;
 
     getAllProcedures();
+    getAllAmounts();
 
     let proceduresDisplayed = [];
-    const handleCurrentRecipeIdChange = (currentRecipeId, procedures) => {
-        const finale = procedures.filter(v=>v.recipe_id == currentRecipeId);
-        proceduresDisplayed = finale
+    let amountsDisplayed = [];
+    const handleCurrentRecipeIdChange = (currentRecipeId, procedures, amounts) => {
+        proceduresDisplayed = procedures.filter(v=>v.recipe_id == currentRecipeId);
+        amountsDisplayed = amounts.filter(v=>v.recipe_id == currentRecipeId);
     }
 
-    $: handleCurrentRecipeIdChange(currentRecipeId, $procedures)
-
-    // TODO: Get request
-    let amounts = [
-        {id: 1, amount: 1, ingredient_id: 1},
-        {id: 2, amount: 2, ingredient_id: 2},
-        {id: 3, amount: 33, ingredient_id: 3},
-    ]
-
-    // TODO: Load all ingredients at once to the parents
-    let ingredients = [
-        {name: "egg", unit: "piece"},
-        {name: "cabbage", unit: "piece"},
-        {name: "milk", unit: "ml"},
-        {name: "water", unit: "ml"}
-    ]
-
-
+    $: handleCurrentRecipeIdChange(currentRecipeId, $procedures, $amounts)
 
     let addingProcedure = false;
+    let addingAmount = false;
 </script>
 
 <section>
@@ -40,12 +28,13 @@
 
         <h3>Ingredients</h3>
         <ul class="ingredients">
-            {#each amounts as {id, amount, ingredient_id} (id)}
+            {#each amountsDisplayed as {id, amount, ingredient_id} (id)}
                 <li><label>
                     <input type="checkbox">
-                    {ingredients[ingredient_id].name + ": " + amount + " " + ingredients[ingredient_id].unit}
+                    {id + ", ingredient: " +ingredient_id + " amount: " + amount + " "}
                 </label></li>
             {/each}
+            <button class="addProcedure" on:click={()=>{addingAmount = true}}>add amount</button>
         </ul>
 
         <h3>Steps</h3>
@@ -62,6 +51,10 @@
 
 {#if addingProcedure}
     <PostProcedure close={()=>{addingProcedure=false}} recipe_id={currentRecipeId} />
+{/if}
+
+{#if addingAmount}
+    <PostAmount close={()=>{addingAmount=false}} recipe_id={currentRecipeId} />
 {/if}
 
 
