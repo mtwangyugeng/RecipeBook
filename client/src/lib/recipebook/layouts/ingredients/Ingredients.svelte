@@ -15,5 +15,5 @@
 </section>
 
 {#if addingIngredient}
-    <PostIngredient close={addingIngredient=false}/>
+    <PostIngredient close={()=>{addingIngredient=false}}/>
 {/if}
