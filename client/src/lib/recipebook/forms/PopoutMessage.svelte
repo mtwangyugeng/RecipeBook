@@ -38,9 +38,16 @@
         background-color: green;
         display: flex;
         justify-content: space-between;
+        padding: 5px;
+        user-select: none;
     }
 
-    .topbar > .close {
+    .close {
         padding: 2px;
     }
+
+    .close:hover {
+        color: white;
+    }
+
 </style>
