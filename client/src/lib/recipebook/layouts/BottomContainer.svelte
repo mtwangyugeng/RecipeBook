@@ -5,7 +5,7 @@
 
 <style>
     section {
-        height: 95%;
+        height: calc(100% - 50px);
         background-color: pink;
     }
 </style>

@@ -15,7 +15,6 @@ const switchTab = (imp) => {
 <section>
     <TopBar tabs={tabs} currentTab={currentTab} switchTab={switchTab} />
     <BottomContainer>
-        {currentTab}
         {#if currentTab === "Ingredients"}
             <Ingredients />
         {:else if currentTab === "Recipes"}
