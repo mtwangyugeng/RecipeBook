@@ -30,8 +30,8 @@
     }
 
     section {
-        background-color: white;
-        width: 400px;
+        background-color: rgb(241, 239, 223);
+        /* width: 400px; */
     }
 
     .topbar {

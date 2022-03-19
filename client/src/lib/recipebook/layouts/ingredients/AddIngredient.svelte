@@ -16,7 +16,7 @@
 
 <style>
     button {
-        background-color: rgb(243, 203, 203);
+        background-color: #fff;
         width: 200px;
         height: 260px;
         margin: 10px;
@@ -30,7 +30,7 @@
         justify-content: center;
     }
     button:hover {
-        background-color: white;
+        background-color: rgb(190, 190, 190);
     }
 
     div {

@@ -7,7 +7,9 @@
 
     let message = "Please enter ingredient properties";
 
+    import IngredientCard from "../layouts/ingredients/IngredientCard.svelte"
     let impJson = {
+            id:"<id>",
             name: "",
             unit: "",
             best_market: "",
@@ -16,6 +18,9 @@
         };
 
     const handleSubmit = async () => {
+
+        // TODO: check input
+
         message = "requesting..."
         const status = await postIngredient(impJson, $token)
         if(status == 201) {
@@ -29,17 +34,48 @@
     <PopoutMessage close={close} title="New Ingredient">
         {message}
         <form on:submit|preventDefault={handleSubmit}>
-            {#each Object.keys(impJson) as name}
-                <label for={name}>{name}:</label> <br>
-                <input bind:value={impJson[name]} id={name} placeholder={`Enter ${name}`} required>
-            {/each}
+            
+            <div class="top">
+                <div class="input">
+                    <label for="name">Ingredient Name:</label> <br>
+                    <input bind:value={impJson.name} id="name" placeholder= "Enter Name"  required> <br>
+
+                    <label for="best_market">Best Shop:</label> <br>
+                    <input bind:value={impJson.best_market} id="best_market" placeholder= "Enter Shop Name"  required> <br>
+
+                    <label for="common_quantity">Package Size:</label> <br>
+                    <input type="number" bind:value={impJson.common_quantity} id="common_quantity" placeholder= "Enter Pakage Size"  required> <br>
+
+                    <label for="unit">Package Unit:</label> <br>
+                    <select bind:value={impJson.unit} required>
+                        <optgroup label="Volumn">
+                          <option value="ml">ml</option>
+                          <option value="L">L</option>
+                        </optgroup>
+                        <optgroup label="Weight">
+                          <option value="kg">kg</option>
+                          <option value="g">g</option>
+                        </optgroup>
+                        <optgroup label="Other">
+                            <option value="peice">peice</option>
+                        </optgroup>
+                    </select>
+                    <br>
+
+                    <label for="common_price">Package Price:</label> <br>
+                    <input type="number" bind:value={impJson.common_price} id="common_price" placeholder= "Enter Pakage Unit"  required> <br>
+
+                </div>
+                <IngredientCard {...impJson} />
+            </div>
+            
             <input type="submit" value="Submit">
         </form>    
     </PopoutMessage>
     
     <style>
         form {
-            width: 400px;
+            width: 500px;
     
             display: flex;
             flex-direction: column;
@@ -58,5 +94,17 @@
         label {
             user-select: none;
             cursor: pointer;
+        }
+
+        .top {
+            display: flex;
+        }
+
+        .input {
+        }
+
+        .input > input {
+            width: 200px;
+            padding: 5px;
         }
     </style>

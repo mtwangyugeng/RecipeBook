@@ -5,11 +5,12 @@
     export let best_market;
     export let common_quantity;
     export let common_price;
-
     // TODO: 
     // export let created_at;
     // export let updated_at;
     // export let user_id;
+
+    
 </script>
 
 
@@ -30,7 +31,7 @@
         border-radius: 10px;
 
         padding: 10px;
-        text-transform: capitalize;
+        /* text-transform: capitalize; */
 
         -webkit-box-shadow: 8px 5px 8px -8px #000000; 
         box-shadow: 8px 5px 8px -8px #000000;
