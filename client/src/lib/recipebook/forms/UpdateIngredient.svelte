@@ -1,29 +1,34 @@
 <script>
     import {token} from "../stores/User.js";
-    import {postIngredient} from "../stores/Ingredient.js"
+    import {updateIngredient} from "../stores/Ingredient.js"
 
     import PopoutMessage from "./PopoutMessage.svelte";
     export let close;
+
+    export let id;
+    export let name;
+    export let unit;
+    export let best_market;
+    export let common_quantity;
+    export let common_price;
 
     let message = "Please enter ingredient properties";
 
     import IngredientCard from "../layouts/ingredients/IngredientCard.svelte"
     let impJson = {
-            id:"<id>",
-            name: "",
-            unit: "",
-            best_market: "",
-            common_quantity: "",
-            common_price: "",
+            id: id,
+            name: name,
+            unit: unit,
+            best_market: best_market,
+            common_quantity: common_quantity,
+            common_price: common_price,
         };
 
     const handleSubmit = async () => {
-
         // TODO: check input
-
-        message = "requesting..."
-        const status = await postIngredient(impJson, $token)
-        if(status == 201) {
+        message = "requesting...";
+        const status = await updateIngredient(id, impJson, $token)
+        if(status == 202) {
             close();
         }
     }

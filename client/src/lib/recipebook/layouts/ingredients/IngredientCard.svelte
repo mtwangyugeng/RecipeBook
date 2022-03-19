@@ -1,4 +1,7 @@
 <script>
+import DeleteIngredient from "./DeleteIngredient.svelte";
+import UpdateIngredient from "./UpdateIngredient.svelte";
+
     export let id;
     export let name;
     export let unit;
@@ -19,6 +22,9 @@
     <div class="img-container"></div>
     <p>Best Shop: {best_market}</p>
     <p>Pakage: {common_quantity} {unit} / ${common_price/100}</p>
+
+    <UpdateIngredient id={id} name={name} unit={unit} best_market={best_market} common_quantity={common_quantity} common_price={common_price} />
+    <DeleteIngredient id={id}/>
 </div>
 
 
