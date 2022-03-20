@@ -6,9 +6,11 @@
 
     import {deleteIngredient} from "../stores/Ingredient.js";
     import {token} from "../stores/User.js";
+    import RequestingScreen from "./RequestingScreen.svelte";
+
     export let id;
     const handleSubmit = async () => {
-        message = `Making request...`
+        message = `Requesting...`
         const status = await deleteIngredient(id, $token)
         if (status == 303){
             close();
@@ -22,6 +24,7 @@
     {message}
     <button on:click={handleSubmit}> Yes </button>
     <button on:click={close}> Cancel </button>
+    <RequestingScreen message={message}/>
 </PopoutMessage>
 
 

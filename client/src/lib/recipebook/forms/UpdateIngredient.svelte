@@ -3,6 +3,7 @@
     import {updateIngredient} from "../stores/Ingredient.js"
 
     import PopoutMessage from "./PopoutMessage.svelte";
+    import RequestingScreen from "./RequestingScreen.svelte";
     export let close;
 
     export let id;
@@ -26,7 +27,7 @@
 
     const handleSubmit = async () => {
         // TODO: check input
-        message = "requesting...";
+        message = "Requesting...";
         const status = await updateIngredient(id, impJson, $token)
         if(status == 202) {
             close();
@@ -75,7 +76,8 @@
             </div>
             
             <input type="submit" value="Submit">
-        </form>    
+        </form>
+        <RequestingScreen message={message}/>  
     </PopoutMessage>
     
     <style>

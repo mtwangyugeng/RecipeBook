@@ -14,3 +14,10 @@ import DeleteIngredient from "../../forms/DeleteIngredient.svelte";
 {#if openPopout}
     <DeleteIngredient close={()=>openPopout = false} id={id} />
 {/if}
+
+
+<style>
+    button {
+        color: rgb(245, 0, 0);
+    }
+</style>

@@ -32,6 +32,7 @@
     section {
         background-color: rgb(241, 239, 223);
         /* width: 400px; */
+        position: relative;
     }
 
     .topbar {

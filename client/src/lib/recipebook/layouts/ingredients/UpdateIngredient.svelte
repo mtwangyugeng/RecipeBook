@@ -22,5 +22,7 @@
 
 
 <style>
-    
+    button {
+        color: rgb(43, 255, 0);
+    }
 </style>
