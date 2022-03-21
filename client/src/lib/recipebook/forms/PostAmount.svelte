@@ -4,36 +4,54 @@
 
     import PopoutMessage from "./PopoutMessage.svelte";
     export let close;
+    import RequestingScreen from "./RequestingScreen.svelte";
 
     let message = "Please enter amount properties";
 
     export let recipe_id;
 
-    let impJson = {
-            amount: "",
-            ingredient_id: "",
+    
+    let selectedIngredient = null;
+    let amount = "";
+    
+    $: impJson = {
+            amount: amount,
+            ingredient_id: selectedIngredient && selectedIngredient.id,
         };
 
     const handleSubmit = async () => {
-        message = "requesting..."
+        message = "Requesting..."
         const status = await postAmount({...impJson, recipe_id}, $token)
         if(status == 201) {
             close();
         }
     }
     
-    
+    import {ingredients} from "../stores/Ingredient.js";
     </script>
     
-    <PopoutMessage close={close} title={`New procedure in ${recipe_id}`}>
+    <PopoutMessage close={close} title={`New Ingredient in Recipe ${recipe_id}`}>
         {message}
         <form on:submit|preventDefault={handleSubmit}>
-            {#each Object.keys(impJson) as name}
-                <label for={name}>{name}:</label> <br>
-                <input bind:value={impJson[name]} id={name} placeholder={`Enter ${name}`} required>
-            {/each}
+            <label for="ingredient">Ingredient:</label> <br>
+            <select name="ingredient" id="ingredient" bind:value={selectedIngredient} required>
+                {#each $ingredients as ingredient (ingredient.id)}
+                    <option value={ingredient}>{ingredient.name}</option>
+                {/each}
+              </select>
+
+            <label for="amount">Amount:</label> <br>
+
+            <div class="amount-container">
+                <input type="number" bind:value={amount} id="amount" placeholder={`Enter Amount`} required>
+                {selectedIngredient ? selectedIngredient["unit"]: "<unit>"}
+            </div>
+
+
             <input type="submit" value="Submit">
-        </form>    
+        </form>
+
+        <RequestingScreen message={message}/>
     </PopoutMessage>
     
     <style>

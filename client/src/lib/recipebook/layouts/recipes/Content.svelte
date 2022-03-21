@@ -3,6 +3,7 @@
     import PostAmount from "../../forms/PostAmount.svelte";
     import {procedures, getAllProcedures} from "../../stores/Procedure.js"
     import {amounts, getAllAmounts} from "../../stores/Amount.js"
+    import Ingredient from "./Ingredient.svelte";
 
     export let currentRecipeId;
 
@@ -29,10 +30,7 @@
         <h3>Ingredients</h3>
         <ul class="ingredients">
             {#each amountsDisplayed as {id, amount, ingredient_id} (id)}
-                <li><label>
-                    <input type="checkbox">
-                    {id + ", ingredient: " +ingredient_id + " amount: " + amount + " "}
-                </label></li>
+                <Ingredient ingredientId={ingredient_id} amount={amount} />
             {/each}
             <button class="addProcedure" on:click={()=>{addingAmount = true}}>add amount</button>
         </ul>
@@ -65,13 +63,6 @@
         padding: 20px
     }
 
-    .ingredients > li {
-        padding-left: 20px;
-    }
-
-    .ingredients label {
-        cursor: pointer;
-    }
 
     .steps > li {
         margin-top: 20px;
