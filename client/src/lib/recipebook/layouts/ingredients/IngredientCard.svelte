@@ -18,7 +18,8 @@ import UpdateIngredient from "./UpdateIngredient.svelte";
 
 
 <div class="container">
-    <h3>#{id} {name}</h3>
+    <h3>{name}</h3>
+    <h4>ID: #{id}</h4>
     <div class="img-container"></div>
     <p>Best Shop: {best_market}</p>
     <p>Pakage: {common_quantity} {unit} / ${common_price/100}</p>

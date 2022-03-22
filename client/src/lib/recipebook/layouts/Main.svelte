@@ -3,8 +3,9 @@ import TopBar from './topbar/TopBar.svelte'
 import BottomContainer from './BottomContainer.svelte' 
 import Ingredients from './ingredients/Ingredients.svelte';
 import Recipes from './recipes/Recipes.svelte';
+import ShoppingLists from './shoppinglists/ShoppingLists.svelte';
 
-const tabs = ['Ingredients', 'Recipes', "Shopping List"]
+const tabs = ['Ingredients', 'Recipes', "Shopping Lists"]
 let currentTab = tabs[0];
 const switchTab = (imp) => {
     currentTab = imp
@@ -19,8 +20,8 @@ const switchTab = (imp) => {
             <Ingredients />
         {:else if currentTab === "Recipes"}
             <Recipes />
-        {:else if currentTab === "Shopping List"}
-            TODO
+        {:else if currentTab === "Shopping Lists"}
+            <ShoppingLists />
         {/if}
     </BottomContainer>
 </section>
