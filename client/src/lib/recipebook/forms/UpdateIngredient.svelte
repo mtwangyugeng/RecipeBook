@@ -1,9 +1,10 @@
 <script>
+    import PopoutMessage from "./PopoutMessage.svelte";
+    import RequestingScreen from "./RequestingScreen.svelte";
+
     import {token} from "../stores/User.js";
     import {updateIngredient} from "../stores/Ingredient.js"
 
-    import PopoutMessage from "./PopoutMessage.svelte";
-    import RequestingScreen from "./RequestingScreen.svelte";
     export let close;
 
     export let id;
@@ -31,6 +32,8 @@
         const status = await updateIngredient(id, impJson, $token)
         if(status == 202) {
             close();
+        } else {
+            message = "Update failed, code: " + status;
         }
     }
     
@@ -72,7 +75,10 @@
                     <input type="number" bind:value={impJson.common_price} id="common_price" placeholder= "Enter Pakage Unit"  required> <br>
 
                 </div>
-                <IngredientCard {...impJson} />
+
+                <div class="preview">
+                    <IngredientCard {...impJson} />
+                </div>
             </div>
             
             <input type="submit" value="Submit">
@@ -81,6 +87,12 @@
     </PopoutMessage>
     
     <style>
+        .preview {
+            pointer-events: none;
+            user-select: none;
+            margin: 10px auto;
+        }
+        
         form {
             width: 500px;
     

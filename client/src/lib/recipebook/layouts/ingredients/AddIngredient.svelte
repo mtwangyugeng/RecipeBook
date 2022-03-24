@@ -3,7 +3,7 @@
         let addingIngredient = false;
 </script>
 
-<button on:click={()=>{addingIngredient=true}}>
+<button class="card" on:click={()=>{addingIngredient=true}}>
     <div>
         Add Ingredient
     </div>
@@ -17,10 +17,6 @@
 <style>
     button {
         background-color: #fff;
-        width: 200px;
-        height: 260px;
-        margin: 10px;
-        border-radius: 10px;
 
         padding: 10px;
         text-transform: capitalize;

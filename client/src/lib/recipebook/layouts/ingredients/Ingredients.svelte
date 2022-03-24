@@ -1,21 +1,20 @@
 <script>
-    import {ingredients, getAllIngredients} from '../../stores/Ingredient.js'
-    getAllIngredients()
-    
     import IngredientCard from './IngredientCard.svelte'
-
     import AddIngredient from './AddIngredient.svelte'
+    import {ingredients, getAllIngredients} from '../../stores/Ingredient.js'
+    import CardContainer from './CardContainer.svelte'
+
+    getAllIngredients()
 </script>
 
 
 <section>
-    <div class="card-container">
+    <CardContainer>
         {#each $ingredients as ingredient (ingredient.id)}
             <IngredientCard {...ingredient} />
         {/each}
         <AddIngredient /> 
-    </div> 
-
+    </CardContainer>
 </section>
 
 
@@ -23,12 +22,6 @@
     section {
         background-color: lightgreen;
         height: 100%;
-    }
-
-    .card-container {
-        /* background-color: blue; */
-        display: flex;
-        flex-wrap: wrap;
     }
 
 </style>

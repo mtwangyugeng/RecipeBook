@@ -17,7 +17,7 @@ import UpdateIngredient from "./UpdateIngredient.svelte";
 </script>
 
 
-<div class="container">
+<div class="container card">
     <h3>{name}</h3>
     <h4>ID: #{id}</h4>
     <div class="img-container"></div>
@@ -32,11 +32,6 @@ import UpdateIngredient from "./UpdateIngredient.svelte";
 <style>
     .container {
         background-color: white;
-        width: 200px;
-        height: 260px;
-        margin: 10px;
-        border-radius: 10px;
-
         padding: 10px;
         /* text-transform: capitalize; */
 
