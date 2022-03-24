@@ -37,7 +37,7 @@
     
     </script>
     
-    <PopoutMessage close={close} title="New Ingredient">
+    <PopoutMessage close={close} title="Update Ingredient">
         {message}
         <form on:submit|preventDefault={handleSubmit}>
             

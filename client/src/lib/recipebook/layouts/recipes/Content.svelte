@@ -16,7 +16,7 @@
         proceduresDisplayed = procedures.filter(v=>v.recipe_id == currentRecipeId);
         amountsDisplayed = amounts.filter(v=>v.recipe_id == currentRecipeId);
     }
-
+    
     $: handleCurrentRecipeIdChange(currentRecipeId, $procedures, $amounts)
 
     let addingProcedure = false;
@@ -26,7 +26,7 @@
 <section>
     {#if currentRecipeId}
         <h2>{currentRecipeId}</h2>
-
+        
         <h3>Ingredients</h3>
         <ul class="ingredients">
             {#each amountsDisplayed as {id, amount, ingredient_id} (id)}
