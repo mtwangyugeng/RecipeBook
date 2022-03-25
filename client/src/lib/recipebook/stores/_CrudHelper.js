@@ -8,6 +8,7 @@ export const getCrudApi = (impUrl, writableArr) => {
                 const resJson = await res.json();
                 writableArr.set(resJson);
             }
+            return res.status;
         },
 
         post: async (impJson, token) => {
