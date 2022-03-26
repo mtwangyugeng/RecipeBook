@@ -12,11 +12,8 @@ import UpdateIngredient from "./UpdateIngredient.svelte";
     // export let created_at;
     // export let updated_at;
     // export let user_id;
-
-    export let searchRegex = /.*/;
 </script>
 
-{#if searchRegex.test(name)}
 <div class="container card">
     <h3>{name}</h3>
     <h4>ID: #{id}</h4>
@@ -27,7 +24,6 @@ import UpdateIngredient from "./UpdateIngredient.svelte";
     <UpdateIngredient id={id} name={name} unit={unit} best_market={best_market} common_quantity={common_quantity} common_price={common_price} />
     <DeleteIngredient id={id}/>
 </div>
-{/if}
 
 
 <style>

@@ -10,6 +10,8 @@ import SearchIngredient from './SearchIngredient.svelte';
 
     let search = "";
     $: searchRegex = new RegExp(`(^|\\s)${search}.*`, 'i');
+
+    import { flip } from 'svelte/animate';
 </script>
 
 <section>
@@ -18,8 +20,10 @@ import SearchIngredient from './SearchIngredient.svelte';
 {:then}
     <SearchIngredient bind:search={search}/>
     <CardContainer>
-        {#each $ingredients as ingredient (ingredient.id)}
-            <IngredientCard {...ingredient} searchRegex={searchRegex} />
+        {#each $ingredients.filter(v => searchRegex.test(v.name)) as ingredient (ingredient.id)}
+            <div animate:flip="{{duration: 200}}">
+                <IngredientCard {...ingredient} searchRegex={searchRegex} />
+            </div>
         {/each}
         <AddIngredient /> 
     </CardContainer>
