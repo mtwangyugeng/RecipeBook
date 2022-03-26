@@ -7,6 +7,7 @@
     section {
         display: flex;
         flex-wrap: wrap;
+        max-width: 700px;
     }
 
     section :global(.card) {

@@ -1,5 +1,5 @@
 <script>
-import {user, postSignin, postSignup, logout} from '../../../stores/User.js'
+import {user} from '../../../stores/User.js'
 import FormSignUp from "../../../forms/PostSignUp.svelte"
 import FormSignIn from "../../../forms/PostSignIn.svelte"
 import FormLogOut from "../../../forms/PostLogOut.svelte"

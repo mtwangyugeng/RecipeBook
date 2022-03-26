@@ -23,6 +23,7 @@
         background-color: rgba(0,0,0, 0.7);
         left: 0;
         top: 0;
+        z-index: 99;
 
         display: flex;
         justify-content: center;

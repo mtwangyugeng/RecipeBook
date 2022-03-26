@@ -30,12 +30,13 @@ import SearchIngredient from './SearchIngredient.svelte';
 <style>
     section {
         position: relative;
-        background-color: lightgreen;
+        background-color: rgb(233, 164, 164);
         height: 100%;
         width: 100%;
 
         display: flex;
         flex-direction: column;
+        align-items: center;
     }
 
 

@@ -19,6 +19,7 @@
 
     section {
         /* background-color: blue; */
+        align-self: stretch;
         display: flex;
         justify-content: center;
         background-color: rgb(233, 164, 164);
