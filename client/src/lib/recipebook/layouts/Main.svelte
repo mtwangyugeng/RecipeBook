@@ -29,6 +29,9 @@ const switchTab = (imp) => {
 
 <style>
     section {
+        display: flex;
+        flex-direction: column;
+        position: relative;
         height:100%
     }
 </style>

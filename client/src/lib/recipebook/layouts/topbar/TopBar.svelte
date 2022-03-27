@@ -21,14 +21,17 @@
 
 <style>
     .container {
-        background-color: green;
+        /* background-color: green; */
         height: 50px;
         display: flex;
         justify-content: space-between;
+
+        z-index: 99;
+        -webkit-box-shadow: 0px 6px 12px -3px rgba(0,0,0,0.49); 
+        box-shadow: 0px 6px 12px -3px rgba(0,0,0,0.49);
     }
     nav {
         display: flex;
-        background-color: rgb(51, 255, 0);
         width: 70%;
     }
 </style>
