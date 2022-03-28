@@ -14,14 +14,6 @@ import RequestingScreen from '../../commons/RequestingScreen.svelte';
     import { flip } from 'svelte/animate';
 import SearchBar from '../../commons/SearchBar.svelte';
 
-let shoppingList = {}
-const addingIngredient = function (id) {
-    shoppingList[id] = true;
-}
-const removingIngredient = function (id) {
-    shoppingList[id] = false;
-}
-$: console.log(shoppingList)
 </script>
 
 
@@ -33,7 +25,7 @@ $: console.log(shoppingList)
     <CardContainer>
         {#each $ingredients.filter(v => searchRegex.test(v.name)) as ingredient (ingredient.id)}
             <div animate:flip="{{duration: 200}}">
-                <IngredientCard {...ingredient} addingIngredient={addingIngredient} removingIngredient={removingIngredient}/>
+                <IngredientCard {...ingredient} />
             </div>
         {/each}
         <AddIngredient /> 

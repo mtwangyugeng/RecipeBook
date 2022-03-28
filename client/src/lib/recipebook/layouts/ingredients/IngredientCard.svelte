@@ -1,5 +1,5 @@
 <script>
-import CheckBox from "./CheckBox.svelte";
+import AddToShoppingList from "./AddToShoppingList.svelte";
 import DeleteIngredient from "./DeleteIngredient.svelte";
 import UpdateIngredient from "./UpdateIngredient.svelte";
 
@@ -14,22 +14,10 @@ import UpdateIngredient from "./UpdateIngredient.svelte";
     // export let updated_at;
     // export let user_id;
 
-    export let addingIngredient;
-    export let removingIngredient;
-
-    let activated = false;
-    const handleClick = function () {
-        activated = !activated;
-        if (activated) {
-            addingIngredient(id);
-        } else {
-            removingIngredient(id);
-        }
-    }
 </script>
 
 <div class="container card">
-    <CheckBox activated={activated} on:click={handleClick}/>
+    <AddToShoppingList id={id} />
     <h3>{name}</h3>
     <h4>ID: #{id}</h4>
     <div class="img-container"></div>
@@ -50,15 +38,11 @@ import UpdateIngredient from "./UpdateIngredient.svelte";
 
         -webkit-box-shadow: 8px 5px 8px -8px #000000; 
         box-shadow: 8px 5px 8px -8px #000000;
-
-        cursor: pointer;
-    }
-    .container:hover {
-        background-color: rgb(196, 196, 196);
     }
 
     h3 {
         text-align: center;
+        height: 21px;
     }
 
     .img-container {

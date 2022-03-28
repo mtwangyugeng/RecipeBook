@@ -1,5 +1,7 @@
 import {writable} from 'svelte/store'
 
+export const listIngredients = writable({});
+
 export const shoppingLists = writable([]);
 
 export const getAllShoppingLists = () => {

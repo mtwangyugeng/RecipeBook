@@ -1,7 +1,7 @@
 <script>
     export let close;
 
-    export let title;
+    export let title = "Message";
 </script>
 
 <div class="container">

@@ -8,6 +8,7 @@
         display: flex;
         flex-wrap: wrap;
         max-width: 700px;
+        position: relative;
     }
 
     section :global(.card) {
