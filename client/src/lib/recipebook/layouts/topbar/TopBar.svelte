@@ -6,6 +6,7 @@
 
     import Tab from './Tab.svelte';
     import User from './user/User.svelte';
+
 </script>
 
 
@@ -15,6 +16,8 @@
             <Tab currentTab={currentTab} switchTab={switchTab} tabName={tabName}/> 
         {/each}
     </nav>
+
+    <Tab currentTab={currentTab} switchTab={switchTab} tabName="Shopping Lists"/> 
     <User />
 </div>
 

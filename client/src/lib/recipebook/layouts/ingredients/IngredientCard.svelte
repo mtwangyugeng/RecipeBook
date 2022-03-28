@@ -12,9 +12,23 @@ import UpdateIngredient from "./UpdateIngredient.svelte";
     // export let created_at;
     // export let updated_at;
     // export let user_id;
+
+    export let addingIngredient;
+    export let removingIngredient;
+
+    let activated = false;
+    const handleClick = function () {
+        activated = !activated;
+        if (activated) {
+            addingIngredient(id);
+        } else {
+            removingIngredient(id);
+        }
+    }
 </script>
 
-<div class="container card">
+<div class="container card" on:click={handleClick}>
+    <div class={"active " + (activated && "activated")}></div>
     <h3>{name}</h3>
     <h4>ID: #{id}</h4>
     <div class="img-container"></div>
@@ -27,13 +41,32 @@ import UpdateIngredient from "./UpdateIngredient.svelte";
 
 
 <style>
+    .active {
+        background-color: rgb(255, 255, 255);
+        border: 1px solid #000;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        position: absolute;
+    }
+    .activated {
+        background-color: #000;
+    }
+
+
     .container {
+        position: relative;
         background-color: white;
         padding: 10px;
         /* text-transform: capitalize; */
 
         -webkit-box-shadow: 8px 5px 8px -8px #000000; 
         box-shadow: 8px 5px 8px -8px #000000;
+
+        cursor: pointer;
+    }
+    .container:hover {
+        background-color: rgb(196, 196, 196);
     }
 
     h3 {

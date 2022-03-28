@@ -1,5 +1,6 @@
 <script>
     export let search = "";
+    export let placeholder = "Search Here";
 </script>
 
 <section>
@@ -11,7 +12,7 @@
             l6.124,5.914l-1.414,1.414L48.142,53.42c1.562,1.562,4.095,1.562,5.657,0C55.361,51.858,55.361,49.326,53.799,47.763z"/>
         <circle style="fill:#B0D3F0;" cx="20" cy="20.379" r="16"/>
     </svg>
-    <input bind:value={search} placeholder="Search by Ingredient Name" />
+    <input bind:value={search} placeholder={placeholder} />
 </div>
 </section>
 
@@ -24,9 +25,9 @@
         justify-content: center;
         background-color: rgb(233, 164, 164);
         padding: 5px 0 5px 0;
-
+/* 
         -webkit-box-shadow: 0px 6px 12px -3px rgba(0,0,0,0.49); 
-        box-shadow: 0px 6px 12px -3px rgba(0,0,0,0.49);
+        box-shadow: 0px 6px 12px -3px rgba(0,0,0,0.49); */
     }
 
     .search-bar {

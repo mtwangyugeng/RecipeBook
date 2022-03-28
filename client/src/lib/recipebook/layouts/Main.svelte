@@ -5,7 +5,7 @@ import Ingredients from './ingredients/Ingredients.svelte';
 import Recipes from './recipes/Recipes.svelte';
 import ShoppingLists from './shoppinglists/ShoppingLists.svelte';
 
-const tabs = ['Ingredients', 'Recipes', "Shopping Lists"]
+const tabs = ['Ingredients', 'Recipes']
 let currentTab = tabs[0];
 const switchTab = (imp) => {
     currentTab = imp
