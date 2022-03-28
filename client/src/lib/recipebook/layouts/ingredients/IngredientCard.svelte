@@ -1,4 +1,5 @@
 <script>
+import CheckBox from "./CheckBox.svelte";
 import DeleteIngredient from "./DeleteIngredient.svelte";
 import UpdateIngredient from "./UpdateIngredient.svelte";
 
@@ -27,8 +28,8 @@ import UpdateIngredient from "./UpdateIngredient.svelte";
     }
 </script>
 
-<div class="container card" on:click={handleClick}>
-    <div class={"active " + (activated && "activated")}></div>
+<div class="container card">
+    <CheckBox activated={activated} on:click={handleClick}/>
     <h3>{name}</h3>
     <h4>ID: #{id}</h4>
     <div class="img-container"></div>
@@ -41,19 +42,6 @@ import UpdateIngredient from "./UpdateIngredient.svelte";
 
 
 <style>
-    .active {
-        background-color: rgb(255, 255, 255);
-        border: 1px solid #000;
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
-        position: absolute;
-    }
-    .activated {
-        background-color: #000;
-    }
-
-
     .container {
         position: relative;
         background-color: white;
