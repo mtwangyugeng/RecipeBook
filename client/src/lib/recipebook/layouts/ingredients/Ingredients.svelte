@@ -1,12 +1,10 @@
 <script>
     import IngredientCard from './IngredientCard.svelte'
     import AddIngredient from './AddIngredient.svelte'
-    import {ingredients, getAllIngredients} from '../../stores/Ingredient.js'
+    import {ingredients} from '../../stores/Ingredient.js'
     import CardContainer from './CardContainer.svelte'
 import RequestingScreen from '../../commons/RequestingScreen.svelte';
 
-
-    let promise = getAllIngredients();
 
     let search = "";
     $: searchRegex = new RegExp(`(^|\\s)${search}.*`, 'i');
@@ -18,9 +16,9 @@ import SearchBar from '../../commons/SearchBar.svelte';
 
 
 <section>
-{#await promise}
+{#if $ingredients.length == 0}
     <RequestingScreen message="Requesting..." />
-{:then}
+{:else}
     <SearchBar bind:search={search} placeholder="Search By Ingredient Name"/>
     <CardContainer>
         {#each $ingredients.filter(v => searchRegex.test(v.name)) as ingredient (ingredient.id)}
@@ -30,9 +28,7 @@ import SearchBar from '../../commons/SearchBar.svelte';
         {/each}
         <AddIngredient /> 
     </CardContainer>
-{:catch error}
-	<p style="color: red">{error.message}</p>
-{/await}
+{/if}
 </section>
 
 

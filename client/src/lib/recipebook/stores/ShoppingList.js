@@ -1,11 +1,10 @@
 import {writable} from 'svelte/store'
 
-export const listIngredients = writable({});
+export const listItems = writable([]);
 
-export const shoppingLists = writable([]);
 
-export const getAllShoppingLists = () => {
-    shoppingLists.set([
+export const getAllListItems = () => {
+    listItems.set([
         {
             id: 1,
             ingredient_id: 1,
@@ -27,7 +26,7 @@ export const getAllShoppingLists = () => {
 
 let tempId = 3
 export const add = function (ingredient_id) {
-    shoppingLists.update(prev => {
+    listItems.update(prev => {
         let i = prev.findIndex(v => v.ingredient_id === ingredient_id);
         if (i!=-1){
             const res = [...prev]
@@ -44,7 +43,7 @@ export const add = function (ingredient_id) {
 }
 
 export const updateShoppingList = (id, impJson, token) => {
-    shoppingLists.update(prev => {
+    listItems.update(prev => {
         let i = prev.findIndex(v => v.id === id);
         const res = [...prev]
         res[i] = impJson
@@ -56,7 +55,7 @@ export const updateShoppingList = (id, impJson, token) => {
 
 export const postShoppingList = (impJson, token) => {
 
-    shoppingLists.update(prev => {
+    listItems.update(prev => {
         const res = [...prev, impJson]
         return res
     })
@@ -65,9 +64,13 @@ export const postShoppingList = (impJson, token) => {
 
 
 export const deleteShoppingList = (id, token) => {
-    shoppingLists.update(prev => {
+    listItems.update(prev => {
         const res = prev.filter(v => v.id !== id)
         return res
     })
     return 303
 }
+
+
+//init
+getAllListItems();

@@ -24,7 +24,6 @@
     }
 
     .activated {
-        background-color: blue;
-        color: white;
+        border-bottom: 5px solid blue;
     }
 </style>

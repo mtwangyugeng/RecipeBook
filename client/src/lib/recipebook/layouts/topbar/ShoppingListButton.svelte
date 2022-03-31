@@ -34,13 +34,14 @@ const handleClick = function () {
         position: absolute;
         top: 100%;
         left: -25%;
-        background-color: blue;
     }
 
     button {
+        height: 100%;
         padding: 10px;
     }
     .activated-button {
         background-color: blue;
+        color: white;
     }
 </style>

@@ -10,3 +10,7 @@ export const getAllIngredients = crud.getAll;
 export const postIngredient = crud.post;
 export const updateIngredient = crud.update;
 export const deleteIngredient = crud.delete;
+
+
+// init
+await getAllIngredients();
