@@ -1,4 +1,6 @@
 <script>
+import ShoppingListButton from './ShoppingListButton.svelte';
+
 //  NavList + userInfo
     export let tabs;
     export let switchTab;
@@ -17,7 +19,7 @@
         {/each}
     </nav>
 
-    <Tab currentTab={currentTab} switchTab={switchTab} tabName="Shopping Lists"/> 
+    <ShoppingListButton />
     <User />
 </div>
 

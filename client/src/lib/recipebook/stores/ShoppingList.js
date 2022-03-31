@@ -8,19 +8,40 @@ export const getAllShoppingLists = () => {
     shoppingLists.set([
         {
             id: 1,
-            name: "List A"
+            ingredient_id: 1,
+            ingredient_amount: 2
             //created_at;
             //updated_at;
         },
         {
             id: 2,
-            name: "List B"
+            ingredient_id: 2,
+            ingredient_amount: 3
             //created_at;
             //updated_at;
         }
     ]);
     return 200;
 };
+
+
+let tempId = 3
+export const add = function (ingredient_id) {
+    shoppingLists.update(prev => {
+        let i = prev.findIndex(v => v.ingredient_id === ingredient_id);
+        if (i!=-1){
+            const res = [...prev]
+            res[i]["ingredient_amount"] += 1
+            return res
+        } else{
+            return [...prev, {
+                id:tempId++, 
+                ingredient_id:ingredient_id, 
+                ingredient_amount: 1
+            }]
+        }
+    })
+}
 
 export const updateShoppingList = (id, impJson, token) => {
     shoppingLists.update(prev => {

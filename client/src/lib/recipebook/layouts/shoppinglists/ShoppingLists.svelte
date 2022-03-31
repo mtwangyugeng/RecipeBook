@@ -1,13 +1,13 @@
 <script>
     import {shoppingLists, getAllShoppingLists} from "../../stores/ShoppingList.js";
-    import ShoppingList from "./ShoppingList.svelte";
 
     getAllShoppingLists();
+import ListItem from "./ListItem.svelte";
 </script>
 
 <section>
     {#each $shoppingLists as shoppingList (shoppingList.id)}
-        <ShoppingList shoppingList={shoppingList}/>
+        <ListItem {...shoppingList}/>
     {/each}
 </section>
 

@@ -1,54 +1,22 @@
 <script>
-import PopoutMessage from "../../commons/PopoutMessage.svelte";
-
-    export let activated = false;
+    import {add} from "../../stores/ShoppingList"
 
     export let id;
-    let amount;
 
     const handleSubmit = () => {
-        const loatout = {id:id, amount:amount}
-        console.log(loatout)
+        console.log(id)
+        // add id to the shopping list
+        add(id)
     }
 </script>
 
 
-<button on:click={()=>activated = true}>
+<button on:click={handleSubmit}>
     +
 </button>
 
-{#if activated}
-    <PopoutMessage close={()=>activated = false} title="Add to the Shopping List">
-        <form on:submit|preventDefault={handleSubmit}>
-            <label for="amount">
-                Enter amount: 
-                <input id="amount" type="number" bind:value={amount} />
-            </label>
-            <input type="submit" value="Add"/>
-        </form>
-    </PopoutMessage>
-{/if}
-
 
 <style>
-    form {
-        padding: 10px;
-        display: flex;
-        flex-direction: column;
-    }
-    label {
-        margin: 10px;
-    }
-
-    form > input[type="submit"] {
-        background-color: yellow;
-        padding: 10px;
-    }
-    form > input[type="submit"]:hover {
-        background-color: rgb(255, 145, 0);
-    }
-    
-
     button {
         background-color: rgb(255, 255, 255);
         border: 1px solid #000;

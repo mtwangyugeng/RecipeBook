@@ -30,6 +30,8 @@ import SearchBar from '../../commons/SearchBar.svelte';
         {/each}
         <AddIngredient /> 
     </CardContainer>
+{:catch error}
+	<p style="color: red">{error.message}</p>
 {/await}
 </section>
 
