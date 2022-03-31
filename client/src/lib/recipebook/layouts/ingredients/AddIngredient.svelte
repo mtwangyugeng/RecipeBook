@@ -5,7 +5,7 @@
 
 <button class="card" on:click={()=>{addingIngredient=true}}>
     <div>
-        Add Ingredient
+        +
     </div>
 </button>
 
@@ -31,8 +31,8 @@
 
     div {
         border: 3px dashed rgb(134, 134, 134);
-        width: 150px;
-        height: 150px;
+        width: 80%;
+        height: 80%;
 
         display: flex;
         align-items: center;

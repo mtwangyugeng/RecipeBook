@@ -1,16 +1,23 @@
 <script>
 import ShoppingLists from "../shoppinglists/ShoppingLists.svelte";
-
+import {listItems} from "../../stores/ShoppingList.js"
 
 let activated = false;
 const handleClick = function () {
     activated = !activated;
 }
+
+$: length = $listItems.reduce(function (sum, item) {
+    return sum + item.ingredient_amount
+}, 0)
 </script>
 
 <div class="container">
     <button class={(activated ? "activated-button" : "")} on:click={handleClick}>
-        Shopping List
+        Shopping List 
+        <div class="count">
+            {length}
+        </div>
     </button>
 
     <div class={"dropdown " + (activated ? "activated" : "")}>
@@ -39,6 +46,17 @@ const handleClick = function () {
     button {
         height: 100%;
         padding: 10px;
+        position: relative;
+    }
+    .count{
+        color: white;
+        background-color: red;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        top: 5px;
+        right: 0;
     }
     .activated-button {
         background-color: blue;

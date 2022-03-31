@@ -66,7 +66,9 @@
                     <input type="number" bind:value={impJson.common_price} id="common_price" placeholder= "Enter Pakage Unit"  required> <br>
 
                 </div>
-                <IngredientCard {...impJson} />
+                <div class="preview">
+                    <IngredientCard {...impJson} />
+                </div>
             </div>
             
             <input type="submit" value="Submit">
@@ -100,6 +102,11 @@
             display: flex;
         }
 
+        .preview {
+            pointer-events: none;
+            user-select: none;
+            margin: 10px auto;
+        }
 
         .input > input {
             width: 200px;

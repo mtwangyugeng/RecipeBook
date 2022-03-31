@@ -12,7 +12,8 @@
     
 
     <div class="container">
-        <h3>{ingredient.name} ({ingredient.common_quantity} {ingredient.unit} ) x {ingredient_amount}</h3>
+        <h3>{ingredient.name} ({ingredient.common_quantity} {ingredient.unit} ) / ${ingredient.common_price/100}  x {ingredient_amount}</h3>
+        <p>Best Shop: {ingredient.best_market}</p>
         <p>Total Cost: ${ingredient_amount * ingredient.common_price / 100}</p>
     </div>
     

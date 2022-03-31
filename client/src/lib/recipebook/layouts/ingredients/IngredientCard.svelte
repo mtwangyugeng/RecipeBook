@@ -20,7 +20,6 @@ import UpdateIngredient from "./UpdateIngredient.svelte";
     <AddToShoppingList id={id} />
     <h3>{name}</h3>
     <h4>ID: #{id}</h4>
-    <div class="img-container"></div>
     <p>Best Shop: {best_market}</p>
     <p>Pakage: {common_quantity} {unit} / ${common_price/100}</p>
 
@@ -43,11 +42,5 @@ import UpdateIngredient from "./UpdateIngredient.svelte";
     h3 {
         text-align: center;
         height: 21px;
-    }
-
-    .img-container {
-        height: 50%;
-        border: 1PX solid #000000;
-        margin: 10px 0 15px 0;
     }
 </style>
