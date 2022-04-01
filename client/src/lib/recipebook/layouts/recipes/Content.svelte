@@ -30,7 +30,7 @@
         <h3>Ingredients</h3>
         <ul class="ingredients">
             {#each amountsDisplayed as {id, amount, ingredient_id} (id)}
-                <Ingredient ingredientId={ingredient_id} amount={amount} />
+                <Ingredient id={id} ingredientId={ingredient_id} amount={amount} />
             {/each}
             <button class="addProcedure" on:click={()=>{addingAmount = true}}>add amount</button>
         </ul>

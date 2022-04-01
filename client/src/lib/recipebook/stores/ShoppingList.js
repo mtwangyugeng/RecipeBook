@@ -25,19 +25,34 @@ export const getAllListItems = () => {
 
 
 let tempId = 3
-export const add = function (ingredient_id) {
+export const add = function (ingredient_id, add_amount=1) {
     listItems.update(prev => {
         let i = prev.findIndex(v => v.ingredient_id === ingredient_id);
         if (i!=-1){
             const res = [...prev]
-            res[i]["ingredient_amount"] += 1
+            res[i]["ingredient_amount"] += add_amount
             return res
         } else{
             return [...prev, {
                 id:tempId++, 
                 ingredient_id:ingredient_id, 
-                ingredient_amount: 1
+                ingredient_amount: add_amount
             }]
+        }
+    })
+}
+
+export const minus = function (ingredient_id) {
+    listItems.update(prev => {
+        let i = prev.findIndex(v => v.ingredient_id === ingredient_id);
+        if (i!=-1){
+            const res = [...prev]
+            if (res[i]["ingredient_amount"] <= 1){
+                res.splice(i, 1);
+            }else{
+                res[i]["ingredient_amount"] -= 1
+            }
+            return res
         }
     })
 }

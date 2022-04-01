@@ -15,13 +15,17 @@ $:{
     });
 }
 
+let search ="";
+$: searchRegex = new RegExp(`(^|\\s)${search}.*`, 'i');
 
 </script>
 
 <section>
+    <div class="list-items">
     {#each $listItems as item (item.id)}
         <ListItem {...item} />
     {/each}
+    </div>
     <div class="total">
         Total: ${total / 100}
     </div>
@@ -32,7 +36,12 @@ $:{
         display: flex;
         flex-direction: column;
         background-color: blue;
-        width: 300px
+        width: 300px;
+        
+    }
+    .list-items{
+        max-height: 300px;
+        overflow: auto;
     }
 
     .total {

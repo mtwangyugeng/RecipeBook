@@ -38,7 +38,6 @@ import UpdateIngredient from "./UpdateIngredient.svelte";
         -webkit-box-shadow: 8px 5px 8px -8px #000000; 
         box-shadow: 8px 5px 8px -8px #000000;
     }
-
     h3 {
         text-align: center;
         height: 21px;
