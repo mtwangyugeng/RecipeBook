@@ -31,29 +31,22 @@ import { add } from '../../stores/ShoppingList.js';
     {ingredient.name}
     {amount}
     {ingredient.unit}
-    <div>+</div>
+    <div class="add">+</div>
     <div class="delete" on:click={handeleDelete}>-</div>
 </li>
 
 
 <style>
     li {
-        padding-left: 20px;
-        cursor: pointer;
-        padding: 10px;
-        margin: 2px;
-        border-radius: 10px;
-        background-color: yellow;
-        width: 200px;
-
         display: flex;
         justify-content: space-between;
+        background-color: yellow;
     }
 
-    li > div {
+    li > .add {
         color: yellow;
     }
-    li:hover > div {
+    li:hover > .add {
         color: black;
     }
     .delete {
@@ -63,6 +56,9 @@ import { add } from '../../stores/ShoppingList.js';
         height: 20px;
         display: flex;
         justify-content: center;
+    }
+    .delete:hover {
+        background-color: pink;
     }
 
 </style>

@@ -1,3 +1,7 @@
+import { token } from "./User";
+let temp;
+token.subscribe(v=>temp=v)
+
 export const getCrudApi = (impUrl, writableArr) => {
     return {
         getAll: async () => {
@@ -11,7 +15,7 @@ export const getCrudApi = (impUrl, writableArr) => {
             return res.status;
         },
 
-        post: async (impJson, token) => {
+        post: async (impJson, token=temp) => {
             const url = impUrl;
             const options = {
                 method: "POST",
@@ -32,7 +36,7 @@ export const getCrudApi = (impUrl, writableArr) => {
             return res.status
         },
 
-        update: async (id, impJson, token) => {
+        update: async (id, impJson, token=temp) => {
             const url = impUrl + `/${id}`;
             const options = {
                 method: "PATCH",
@@ -56,7 +60,7 @@ export const getCrudApi = (impUrl, writableArr) => {
             return res.status
         },
 
-        delete: async (id, token) => {
+        delete: async (id, token=temp) => {
             const url = impUrl + `/${id}`;
             const options = {
                 method: "DELETE",

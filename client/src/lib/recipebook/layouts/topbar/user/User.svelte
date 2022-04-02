@@ -10,8 +10,8 @@ let loggingOut = false;
 </script>
 
 <section>
-    <button class="setting">
-    </button>
+    <!-- <button class="setting">
+    </button> -->
 {#if $user.email}
     {$user.email}
     <button on:click={()=>{loggingOut=true}}>Log Out</button>
@@ -58,9 +58,9 @@ let loggingOut = false;
         filter: brightness(125%);
     }
     
-    .setting {
+    /* .setting {
         background-color: red;
         width: 35px;
         height: 35px;
-    }
+    } */
 </style>

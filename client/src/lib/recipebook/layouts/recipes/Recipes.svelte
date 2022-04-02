@@ -1,15 +1,20 @@
 <script>
     import Content from "./Content.svelte";
     import SideBar from "./SideBar.svelte";
-    const setCurrentRecipeId = (neo) =>{
-        return () => {currentRecipeId = neo}
-    }
+
     let currentRecipeId = null;
+    let currentTitle = "";
+
+    const setCurrentRecipeId = (neo, title="") =>{
+        currentRecipeId = neo;
+        currentTitle = title;
+    }
+    
 </script>
 
 <section>
     <SideBar setCurrentRecipeId={setCurrentRecipeId}/>
-    <Content currentRecipeId={currentRecipeId}/>
+    <Content currentRecipeId={currentRecipeId} currentTitle={currentTitle}/>
 </section>
 
 <style>

@@ -4,8 +4,10 @@
     import {procedures, getAllProcedures} from "../../stores/Procedure.js"
     import {amounts, getAllAmounts} from "../../stores/Amount.js"
     import Ingredient from "./Ingredient.svelte";
+import Step from "./Step.svelte";
 
     export let currentRecipeId;
+    export let currentTitle;
 
     getAllProcedures();
     getAllAmounts();
@@ -25,22 +27,25 @@
 
 <section>
     {#if currentRecipeId}
-        <h2>{currentRecipeId}</h2>
-        
+        <h2>{currentTitle}</h2>
+        <h3>#{currentRecipeId}</h3>
+
         <h3>Ingredients</h3>
         <ul class="ingredients">
             {#each amountsDisplayed as {id, amount, ingredient_id} (id)}
                 <Ingredient id={id} ingredientId={ingredient_id} amount={amount} />
             {/each}
-            <button class="addProcedure" on:click={()=>{addingAmount = true}}>add amount</button>
+            <button class="addAmount" on:click={()=>{addingAmount = true}}>
+                <div>
+                    +
+                </div>
+            </button>
         </ul>
 
         <h3>Steps</h3>
         <ul class="steps">
             {#each proceduresDisplayed as {id, content} (id)}    
-                <li>
-                    {content}
-                </li>
+                <Step id={id} content={content}/>
             {/each}
             <button class="addProcedure" on:click={()=>{addingProcedure = true}}>add procedure</button>
         </ul>
@@ -63,12 +68,39 @@
         padding: 20px
     }
 
+    .ingredients {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .ingredients > :global(*) {
+        padding-left: 20px;
+        cursor: pointer;
+        padding: 10px;
+        margin: 2px;
+        border-radius: 10px;
+        width: 200px;
 
-    .steps > li {
-        margin-top: 20px;
-        background-color: rgb(0, 255, 115);
-        padding: 20px;
-        border-radius: 15px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .addAmount {
+        display: flex;
+        justify-content: center;
+        background-color: orange;
+    }
+    .addAmount:hover {
+        filter: brightness(80%);
+    }
+    .addAmount div {
+        border: 3px dashed rgb(134, 134, 134);
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .addProcedure {

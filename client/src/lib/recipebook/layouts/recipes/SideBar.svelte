@@ -23,7 +23,7 @@
     <h2>Recipes</h2>
     {#each $recipes as recipe (recipe.id)}
         <li>
-            <div on:click={setCurrentRecipeId(recipe.id)}>{recipe.title}</div>
+            <div on:click={()=>setCurrentRecipeId(recipe.id, recipe.title)}>{recipe.title}</div>
             <div on:click={()=>{updatingRecipe = true; updatingRecipeId=recipe.id}}>update</div>
             <div on:click={()=>{deletingRecipe = true; deletingRecipeId=recipe.id}}>delete</div>
         </li>
