@@ -1,7 +1,7 @@
 <script>
     import IngredientCard from './IngredientCard.svelte'
     import AddIngredient from './AddIngredient.svelte'
-    import {ingredients} from '../../stores/Ingredient.js'
+    import {getAllIngredients, ingredients} from '../../stores/Ingredient.js'
     import CardContainer from './CardContainer.svelte'
 import RequestingScreen from '../../commons/RequestingScreen.svelte';
 
@@ -12,6 +12,8 @@ import RequestingScreen from '../../commons/RequestingScreen.svelte';
     import { flip } from 'svelte/animate';
 import SearchBar from '../../commons/SearchBar.svelte';
 
+// TODO
+getAllIngredients();
 </script>
 
 

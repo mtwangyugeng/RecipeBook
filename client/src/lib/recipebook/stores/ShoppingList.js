@@ -5,20 +5,20 @@ export const listItems = writable([]);
 
 export const getAllListItems = () => {
     listItems.set([
-        {
-            id: 1,
-            ingredient_id: 1,
-            ingredient_amount: 2
-            //created_at;
-            //updated_at;
-        },
-        {
-            id: 2,
-            ingredient_id: 2,
-            ingredient_amount: 3
-            //created_at;
-            //updated_at;
-        }
+        // {
+        //     id: 1,
+        //     ingredient_id: 1,
+        //     ingredient_amount: 2
+        //     //created_at;
+        //     //updated_at;
+        // },
+        // {
+        //     id: 2,
+        //     ingredient_id: 2,
+        //     ingredient_amount: 3
+        //     //created_at;
+        //     //updated_at;
+        // }
     ]);
     return 200;
 };

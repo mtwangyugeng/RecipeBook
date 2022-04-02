@@ -11,12 +11,10 @@ $:{
     total = 0;
     $listItems.forEach(item => {
         let ingredient = $ingredients.find((v)=>(v.id == item.ingredient_id))
-        total += item.ingredient_amount * ingredient.common_price
+        if(ingredient)
+            total += item.ingredient_amount * ingredient.common_price
     });
 }
-
-let search ="";
-$: searchRegex = new RegExp(`(^|\\s)${search}.*`, 'i');
 
 </script>
 

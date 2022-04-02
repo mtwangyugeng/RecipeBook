@@ -4,10 +4,16 @@ token.subscribe(v=>temp=v)
 
 export const getCrudApi = (impUrl, writableArr) => {
     return {
-        getAll: async () => {
+        getAll: async (token=temp) => {
             const url = impUrl;
+            const options = {
+                method: "GET",
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                },
+            };
         
-            const res = await fetch(url);
+            const res = await fetch(url, options);
             if (res.status == 200) {
                 const resJson = await res.json();
                 writableArr.set(resJson);

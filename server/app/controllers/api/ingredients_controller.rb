@@ -1,5 +1,4 @@
 class Api::IngredientsController < ApplicationController
-    skip_before_action :authorized, only: [:index, :show]
     include CrudHelper
 
     def initialize

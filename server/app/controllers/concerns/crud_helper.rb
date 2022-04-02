@@ -1,6 +1,5 @@
 module CrudHelper
     extend ActiveSupport::Concern
-
     def create
         res = @target_model.new(
                 **@target_params,
@@ -14,7 +13,7 @@ module CrudHelper
     end
 
     def index
-        res = @target_model.all()
+        res = @target_model.where(user_id: @user.id)
         render json: res
     end
 

@@ -7,6 +7,7 @@ import FormLogOut from "../../../forms/PostLogOut.svelte"
 let signningIn = false;
 let signningUp = false;
 let loggingOut = false;
+
 </script>
 
 <section>

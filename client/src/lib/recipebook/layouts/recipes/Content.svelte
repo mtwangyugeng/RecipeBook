@@ -47,7 +47,7 @@ import Step from "./Step.svelte";
             {#each proceduresDisplayed as {id, content} (id)}    
                 <Step id={id} content={content}/>
             {/each}
-            <button class="addProcedure" on:click={()=>{addingProcedure = true}}>add procedure</button>
+            <li class="addProcedure" on:click={()=>{addingProcedure = true}}>+</li>
         </ul>
     {/if}
 </section>
@@ -62,6 +62,11 @@ import Step from "./Step.svelte";
 
 
 <style>
+    .steps > :global(*){
+        margin-top: 20px;
+        padding: 20px;
+        border-radius: 15px;
+    }
     section {
         width: calc(100% - 200px);
         background-color: pink;
@@ -104,8 +109,10 @@ import Step from "./Step.svelte";
     }
 
     .addProcedure {
-        background-color: blue;
-        padding: 10px;
+        border: 3px dashed rgb(134, 134, 134);
+        display: flex;
+        justify-content: center;
+        cursor: pointer;
     }
     .addProcedure:hover {
         background-color: rgb(51, 255, 0);

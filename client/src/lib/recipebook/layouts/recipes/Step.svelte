@@ -14,10 +14,8 @@
 
 <style>
     li {
-        margin-top: 20px;
+        
         background-color: rgb(0, 255, 115);
-        padding: 20px;
-        border-radius: 15px;
         display: flex;
         justify-content: space-between;
     }
