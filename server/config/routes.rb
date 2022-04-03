@@ -7,6 +7,6 @@ Rails.application.routes.draw do
     resources :recipes
     resources :procedures, :amounts
     resources :ingredients
-
+    resources :list_items
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_15_203626) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_03_001644) do
   create_table "amounts", force: :cascade do |t|
     t.float "amount"
     t.datetime "created_at", null: false
@@ -33,6 +33,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_15_203626) do
     t.float "common_quantity"
     t.integer "common_price"
     t.index ["user_id"], name: "index_ingredients_on_user_id"
+  end
+
+  create_table "list_items", force: :cascade do |t|
+    t.integer "ingredient_id", null: false
+    t.integer "user_id", null: false
+    t.integer "amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ingredient_id"], name: "index_list_items_on_ingredient_id"
+    t.index ["user_id"], name: "index_list_items_on_user_id"
   end
 
   create_table "procedures", force: :cascade do |t|
@@ -65,6 +75,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_15_203626) do
   add_foreign_key "amounts", "recipes"
   add_foreign_key "amounts", "users"
   add_foreign_key "ingredients", "users"
+  add_foreign_key "list_items", "ingredients"
+  add_foreign_key "list_items", "users"
   add_foreign_key "procedures", "recipes"
   add_foreign_key "procedures", "users"
   add_foreign_key "recipes", "users"
