@@ -12,10 +12,19 @@ $:{
     $listItems.forEach(item => {
         let ingredient = $ingredients.find((v)=>(v.id == item.ingredient_id))
         if(ingredient)
-            total += item.ingredient_amount * ingredient.common_price
+            total += item.amount * ingredient.common_price
     });
 }
 
+
+import {token} from "../../stores/User.js"
+
+// $: {
+//     if($token)
+//         getAllListItems();
+//     else
+//         ingredients.set([])
+// }
 </script>
 
 <section>

@@ -9,8 +9,8 @@ import Step from "./Step.svelte";
     export let currentRecipeId;
     export let currentTitle;
 
-    getAllProcedures();
-    getAllAmounts();
+    // getAllProcedures();
+    // getAllAmounts();
 
     let proceduresDisplayed = [];
     let amountsDisplayed = [];

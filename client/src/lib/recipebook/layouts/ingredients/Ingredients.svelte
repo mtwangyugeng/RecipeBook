@@ -12,8 +12,14 @@ import RequestingScreen from '../../commons/RequestingScreen.svelte';
     import { flip } from 'svelte/animate';
 import SearchBar from '../../commons/SearchBar.svelte';
 
-// TODO
-getAllIngredients();
+
+
+// $: {
+//     if($token)
+//         getAllIngredients();
+//     else
+//         ingredients.set([])
+// }
 </script>
 
 

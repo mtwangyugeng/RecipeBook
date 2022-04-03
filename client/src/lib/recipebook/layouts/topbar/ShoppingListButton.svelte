@@ -5,10 +5,11 @@ import {listItems} from "../../stores/ShoppingList.js"
 let activated = false;
 const handleClick = function () {
     activated = !activated;
+    // getAllListItems()
 }
 
 $: length = $listItems.reduce(function (sum, item) {
-    return sum + item.ingredient_amount
+    return sum + item.amount
 }, 0)
 </script>
 

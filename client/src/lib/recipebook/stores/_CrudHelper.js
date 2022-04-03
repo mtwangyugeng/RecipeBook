@@ -43,6 +43,7 @@ export const getCrudApi = (impUrl, writableArr) => {
         },
 
         update: async (id, impJson, token=temp) => {
+            console.log(impJson)
             const url = impUrl + `/${id}`;
             const options = {
                 method: "PATCH",

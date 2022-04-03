@@ -8,6 +8,31 @@ let signningIn = false;
 let signningUp = false;
 let loggingOut = false;
 
+
+import {token} from "../../../stores/User.js"
+import { getAllListItems, listItems } from '../../../stores/ShoppingList';
+import { getAllIngredients, ingredients } from '../../../stores/Ingredient'
+import { getAllAmounts, amounts } from '../../../stores/Amount.js';
+import { getAllProcedures, procedures } from '../../../stores/Procedure.js';
+import { getAllRecipes, recipes } from '../../../stores/Recipe.js';
+token.subscribe(v=> {
+    if (v.length > 0) {
+        getAllIngredients()
+            .then(() => {
+                getAllListItems();
+                getAllAmounts();
+                getAllProcedures();
+                getAllRecipes();
+            });
+    } else {
+        listItems.set([]);
+        ingredients.set([]);
+        amounts.set([]);
+        procedures.set([]);
+        recipes.set([]);
+    }
+})
+
 </script>
 
 <section>

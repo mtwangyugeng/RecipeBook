@@ -1,91 +1,45 @@
 import {writable} from 'svelte/store'
+import {getCrudApi} from "./_CrudHelper.js"
 
+const url = "/api/list_items";
 export const listItems = writable([]);
+let temp;
+listItems.subscribe(v=>temp=v)
 
+const crud = getCrudApi(url, listItems)
 
-export const getAllListItems = () => {
-    listItems.set([
-        // {
-        //     id: 1,
-        //     ingredient_id: 1,
-        //     ingredient_amount: 2
-        //     //created_at;
-        //     //updated_at;
-        // },
-        // {
-        //     id: 2,
-        //     ingredient_id: 2,
-        //     ingredient_amount: 3
-        //     //created_at;
-        //     //updated_at;
-        // }
-    ]);
-    return 200;
-};
+export const getAllListItems = crud.getAll;
 
-
-let tempId = 3
 export const add = function (ingredient_id, add_amount=1) {
-    listItems.update(prev => {
-        let i = prev.findIndex(v => v.ingredient_id === ingredient_id);
+        let i = temp.findIndex(v => v.ingredient_id === ingredient_id);
+       
         if (i!=-1){
-            const res = [...prev]
-            res[i]["ingredient_amount"] += add_amount
-            return res
+            const res = temp[i]
+            res["amount"] += add_amount
+            let id= res["id"]
+            crud.update(id, res)
         } else{
-            return [...prev, {
-                id:tempId++, 
+            crud.post({
                 ingredient_id:ingredient_id, 
-                ingredient_amount: add_amount
-            }]
+                amount: add_amount
+            })
         }
-    })
 }
 
 export const minus = function (ingredient_id) {
-    listItems.update(prev => {
-        let i = prev.findIndex(v => v.ingredient_id === ingredient_id);
-        if (i!=-1){
-            const res = [...prev]
-            if (res[i]["ingredient_amount"] <= 1){
-                res.splice(i, 1);
-            }else{
-                res[i]["ingredient_amount"] -= 1
-            }
-            return res
+    let i = temp.findIndex(v => v.ingredient_id === ingredient_id);
+    if (i!=-1){
+        const res = temp[i]
+        let id= res["id"]
+        if (res["amount"] <= 1 || !res["amount"] ){
+            res.splice(i, 1);
+            crud.delete(id)
+        }else{
+            res["amount"] -= 1
+            crud.update(id, res)
         }
-    })
-}
-
-export const updateShoppingList = (id, impJson, token) => {
-    listItems.update(prev => {
-        let i = prev.findIndex(v => v.id === id);
-        const res = [...prev]
-        res[i] = impJson
-        return res
-    })
-    return 202;
-};
-
-
-export const postShoppingList = (impJson, token) => {
-
-    listItems.update(prev => {
-        const res = [...prev, impJson]
-        return res
-    })
-    return 201;
-};
-
-
-export const deleteShoppingList = (id, token) => {
-    listItems.update(prev => {
-        const res = prev.filter(v => v.id !== id)
-        return res
-    })
-    return 303
+    }
 }
 
 
 //init
-getAllListItems();
