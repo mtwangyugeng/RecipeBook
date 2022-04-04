@@ -43,7 +43,7 @@ token.subscribe(v=> {
     <button on:click={()=>{loggingOut=true}}>Log Out</button>
 {:else}
     <button class="sign-in" on:click={()=>{signningIn=true}}>Sign In</button>
-    <!-- <button on:click={()=>{signningUp=true}}>Sign Up</button> -->
+    <button on:click={()=>{signningUp=true}}>Sign Up</button>
 {/if}
 </section>
 

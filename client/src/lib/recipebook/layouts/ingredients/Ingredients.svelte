@@ -24,9 +24,9 @@ import SearchBar from '../../commons/SearchBar.svelte';
 
 
 <section>
-{#if $ingredients.length == 0}
+<!-- {#if $ingredients.length == 0}
     <RequestingScreen message="Requesting..." />
-{:else}
+{:else} -->
     <SearchBar bind:search={search} placeholder="Search By Ingredient Name"/>
     <CardContainer>
         {#each $ingredients.filter(v => searchRegex.test(v.name)) as ingredient (ingredient.id)}
@@ -36,7 +36,7 @@ import SearchBar from '../../commons/SearchBar.svelte';
         {/each}
         <AddIngredient /> 
     </CardContainer>
-{/if}
+<!-- {/if} -->
 </section>
 
 
